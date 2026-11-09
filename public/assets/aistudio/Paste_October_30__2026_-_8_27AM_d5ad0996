@@ -1,0 +1,571 @@
+# PROMPT COMPLETO — CORREÇÕES DO SISTEMA, RECUPERAÇÃO DE SENHA, GERENCIAMENTO DE PERMISSÕES E MELHORIAS NO CHAT
+
+Implemente as melhorias descritas abaixo diretamente no sistema interno de suporte da SuasVendas.
+
+Antes de realizar qualquer alteração, analise a estrutura atual do projeto, incluindo frontend, backend, banco de dados, autenticação, rotas, componentes, estilos e permissões existentes.
+
+Não recrie o sistema do zero. Preserve os dados e as funcionalidades já implementadas. Todas as alterações deverão funcionar de verdade, estar integradas ao banco de dados e possuir validação no backend. Não utilize demonstrações, dados fictícios ou botões sem funcionalidade.
+
+# 12. Correções adicionais de interface, gerenciamento de chats e recuperação de senha
+
+## 12.1. Melhorar a legibilidade dos nomes das colunas ativas
+
+Atualmente, no gerenciamento de colunas, os nomes das colunas que já estão ativas estão difíceis de visualizar. A fonte e as cores utilizadas apresentam pouco contraste, prejudicando a leitura.
+
+Corrija essa interface para que:
+
+- Os nomes das colunas ativas sejam claramente legíveis.
+- A cor da fonte tenha contraste adequado com o fundo.
+- Os nomes não fiquem apagados, esbranquiçados ou difíceis de distinguir.
+- Os estados de coluna ativa, inativa, selecionada e desabilitada sejam visualmente diferentes.
+- Os botões de edição, ativação, desativação e demais ações sejam facilmente identificáveis.
+- O texto permaneça legível ao passar o cursor sobre os elementos e ao selecioná-los.
+
+Revise o tamanho, o peso e a opacidade das fontes. Não utilize transparências ou cores que prejudiquem a leitura dos nomes.
+
+### Compatibilidade com os temas
+
+No tema claro, utilize texto escuro sobre fundos claros, respeitando o padrão visual da aplicação.
+
+No tema escuro, utilize cores claras sobre fundos escuros, mantendo contraste suficiente.
+
+Aplique a correção também aos componentes compartilhados responsáveis pela exibição das colunas, para evitar que o problema volte a ocorrer em outras telas.
+
+## 12.2. Corrigir os campos de seleção de módulos
+
+Na seleção de um módulo já cadastrado no sistema, os elementos exibidos ao lado do módulo, incluindo links e botões de ação, estão com cores muito claras ou pouco contrastantes.
+
+Revise esses componentes para que:
+
+- O nome do módulo seja facilmente identificado.
+- Os links e botões sejam claramente visíveis.
+- Os textos dos botões tenham contraste adequado.
+- Os ícones não fiquem apagados.
+- Os estados de seleção, foco e passagem do cursor sejam legíveis.
+- Os elementos não apresentem texto branco sobre fundo branco ou combinações semelhantes.
+
+Mantenha a identidade visual do sistema, sem alterar desnecessariamente a disposição dos elementos.
+
+Faça os ajustes tanto no tema claro quanto no tema escuro e verifique se os componentes reutilizados em outras telas também estão corretos.
+
+## 12.3. Corrigir os fundos brancos nos formulários de colunas
+
+Os formulários de criação, edição e gerenciamento de colunas ainda apresentam problemas de cores, especialmente quando utilizados no tema escuro.
+
+Revise todos os campos, menus de seleção, listas, caixas de diálogo e botões relacionados às colunas.
+
+Garanta que:
+
+- Os campos utilizem fundos adequados ao tema selecionado.
+- O texto digitado seja sempre legível.
+- Os placeholders tenham contraste suficiente.
+- As opções dos menus de seleção sejam visíveis.
+- Os menus suspensos não apareçam com fundo branco e texto branco.
+- As bordas, os ícones e os estados de foco sejam consistentes.
+- Os formulários funcionem corretamente nos temas claro e escuro.
+
+Não aplique apenas uma correção pontual. Verifique os estilos globais, as variáveis de tema, os componentes compartilhados e eventuais estilos que estejam sobrescrevendo as cores configuradas.
+
+A correção deve ser consistente em todo o gerenciamento de colunas, incluindo a visualização das colunas já ativas.
+
+## 12.4. Implementar a exclusão de chats criados pela equipe
+
+Atualmente, consigo criar chats no chat da equipe, mas preciso de uma maneira de excluir uma conversa que já foi criada.
+
+Implemente uma funcionalidade de exclusão de chats, integrada ao banco de dados e às permissões do sistema.
+
+### Interface de exclusão
+
+Adicione uma opção de excluir chat na interface de gerenciamento das conversas. Ela pode ficar em um menu de ações associado a cada conversa, como um menu de três pontos.
+
+Ao selecionar a opção, apresente uma confirmação informando qual chat será excluído, evitando exclusões acidentais.
+
+O usuário deverá conseguir cancelar a operação ou confirmar a exclusão.
+
+### Regras de funcionamento
+
+- A exclusão deve ser efetiva, e não apenas esconder a conversa temporariamente na interface.
+- A operação deve ser persistida no banco de dados.
+- Após a exclusão, o chat deve desaparecer da lista de conversas e não voltar a aparecer após atualizar a página.
+- A exclusão deve respeitar as permissões definidas para o sistema.
+- Defina claramente quem pode excluir uma conversa: o criador do chat e os administradores autorizados, conforme as regras de acesso da aplicação.
+- A exclusão deve impedir o acesso posterior à conversa por rotas ou requisições diretas, respeitando a política de retenção de dados adotada.
+- Se existirem mensagens, anexos ou outros registros vinculados, trate essas relações de maneira segura, sem deixar registros inconsistentes.
+- Caso seja necessário manter um histórico para auditoria, implemente uma estratégia adequada de exclusão lógica ou retenção, sem deixar o chat disponível para os usuários como se continuasse ativo.
+
+Não permita que um usuário exclua conversas para as quais não tenha autorização.
+
+A validação das permissões deverá ocorrer no backend, e não somente na interface.
+
+Teste a exclusão com diferentes perfis de usuário e confirme que os chats restantes continuam funcionando normalmente.
+
+## 12.5. Corrigir definitivamente a recuperação de senha por e-mail
+
+A recuperação de senha ainda não está funcionando como deveria. Ao tentar realizar o procedimento, o sistema informa que a identidade está sendo verificada ou que está pendente, mas não consigo concluir o processo.
+
+Implemente essa funcionalidade de verdade, permitindo receber um e-mail de recuperação e utilizar o link ou código para definir uma nova senha.
+
+Não basta apresentar uma mensagem dizendo que o e-mail foi enviado ou que a identidade está sendo verificada. O envio precisa acontecer efetivamente, e o processo de recuperação deve funcionar de ponta a ponta.
+
+### 12.5.1. Configurar um provedor de envio de e-mails
+
+Analise a infraestrutura atual e escolha uma solução real de envio de e-mails compatível com o projeto.
+
+Pode ser utilizado um serviço SMTP ou um provedor de e-mail transacional, conforme a arquitetura e os recursos disponíveis.
+
+Se o sistema ainda não possuir essa integração, implemente-a no backend.
+
+Crie as configurações necessárias para que um administrador autorizado consiga configurar o serviço de envio, caso isso seja adequado à arquitetura atual.
+
+As configurações poderão incluir:
+
+- Servidor SMTP ou provedor selecionado.
+- Porta e modo de segurança.
+- Endereço de e-mail remetente.
+- Credenciais de autenticação ou chave de API.
+- Endereço de resposta, quando necessário.
+- Indicador de configuração válida.
+- Funcionalidade de teste de envio.
+
+As credenciais devem ser armazenadas com segurança, preferencialmente em variáveis de ambiente ou em um mecanismo protegido de gerenciamento de segredos.
+
+Nunca exponha senhas SMTP, chaves de API ou outras credenciais no frontend, em arquivos públicos ou em respostas de APIs.
+
+Não invente uma configuração de provedor nem utilize um serviço fictício. A integração deverá utilizar um provedor real e autorizado.
+
+Se forem necessárias credenciais ou informações que ainda não estão disponíveis, identifique exatamente quais dados precisam ser configurados e deixe o sistema preparado para recebê-los de forma segura.
+
+### 12.5.2. Envio real do e-mail de recuperação
+
+Quando o usuário clicar em “Esqueci minha senha” e informar seu e-mail, o sistema deverá iniciar o fluxo de recuperação.
+
+O processo deverá funcionar da seguinte forma:
+
+1. O usuário informa seu endereço de e-mail.
+2. O backend gera um token de recuperação seguro, aleatório e de uso único.
+3. O sistema registra a solicitação com prazo de validade limitado.
+4. O provedor configurado envia efetivamente o e-mail de recuperação.
+5. O usuário recebe a mensagem na caixa de entrada e acessa o link enviado.
+6. O sistema valida o token e permite cadastrar uma nova senha somente se ele for válido e estiver dentro do prazo.
+7. Após a alteração, o token é invalidado e não pode ser reutilizado.
+8. A senha é armazenada de forma segura, utilizando um algoritmo apropriado de hash.
+9. O usuário recebe uma confirmação de que a senha foi alterada com sucesso.
+
+O link deverá direcionar para a página correta de recuperação do sistema, utilizando a URL oficial configurada para o ambiente de produção.
+
+### 12.5.3. Segurança do processo
+
+Implemente as seguintes proteções:
+
+- Tokens criptograficamente seguros.
+- Validade limitada para os links.
+- Uso único dos tokens.
+- Limitação de tentativas e solicitações.
+- Proteção contra abuso do mecanismo de recuperação.
+- Respostas que não revelem desnecessariamente se um endereço está cadastrado.
+- Validação no backend antes de permitir a alteração da senha.
+- Invalidação das sessões anteriores após a recuperação, conforme a política de segurança da aplicação.
+
+Não permita que alguém altere a senha de outro usuário apenas informando o endereço de e-mail.
+
+### 12.5.4. Diagnóstico de falhas de envio
+
+Investigue por que o sistema atualmente permanece no estado de verificação ou pendência.
+
+Verifique:
+
+- Se a solicitação chega ao backend.
+- Se o token de recuperação é gerado e salvo corretamente.
+- Se o serviço de envio está configurado.
+- Se as credenciais do provedor são válidas.
+- Se há erros de conexão, autenticação ou entrega.
+- Se a URL de recuperação está correta.
+- Se o frontend interpreta adequadamente o resultado retornado pelo backend.
+- Se existem erros que deixam a solicitação indefinidamente pendente.
+
+Implemente registros técnicos que permitam diagnosticar erros de envio sem registrar senhas, tokens completos ou outros dados sensíveis.
+
+Se o provedor estiver indisponível ou não estiver configurado, apresente uma mensagem apropriada ao usuário e registre detalhes técnicos seguros para diagnóstico. Não informe que o e-mail foi enviado quando o envio tiver falhado.
+
+### 12.5.5. Testes de ponta a ponta
+
+Após implementar a integração, realize testes reais de recuperação de senha em ambiente controlado.
+
+Confirme que:
+
+- A solicitação chega ao backend.
+- O e-mail é enviado pelo provedor configurado.
+- A mensagem chega a uma caixa de entrada de teste autorizada.
+- O link abre a página correta.
+- O token válido permite alterar a senha.
+- Um token expirado ou já utilizado é rejeitado.
+- A nova senha permite realizar login.
+- A senha antiga deixa de funcionar.
+- As sessões anteriores são invalidadas conforme definido.
+- Os erros de envio são tratados corretamente.
+
+Não considere a recuperação de senha concluída apenas porque o formulário foi implementado ou porque o sistema exibiu uma mensagem de sucesso.
+
+A funcionalidade só deverá ser considerada operacional após a validação do fluxo completo.
+
+## 12.6. Preservação das funcionalidades existentes
+
+Todas as alterações deverão ser realizadas sem comprometer o restante da aplicação.
+
+Não apague usuários, chats, mensagens, módulos, colunas, artigos ou outras informações reais.
+
+Não recrie tabelas nem altere a estrutura do banco de dados sem necessidade.
+
+Se forem necessárias migrações, implemente-as de maneira segura, compatível com os dados existentes e com possibilidade de recuperação em caso de falha.
+
+Mantenha as permissões atuais de administradores, supervisores, suporte e equipe técnica, realizando somente as alterações necessárias para corrigir as falhas identificadas.
+
+## 12.7. Validação final das correções
+
+Após concluir as alterações, teste:
+
+1. A legibilidade dos nomes das colunas ativas.
+2. A legibilidade dos links, botões e opções na seleção de módulos.
+3. Os campos de criação e edição de colunas nos temas claro e escuro.
+4. A exclusão de chats com confirmação e validação de permissões.
+5. A persistência da exclusão após recarregar a aplicação.
+6. O envio real do e-mail de recuperação.
+7. A alteração de senha por meio de um token válido.
+8. A rejeição de tokens inválidos, expirados ou reutilizados.
+9. O funcionamento do login após a troca de senha.
+10. A ausência de erros críticos no frontend e backend.
+
+# 13. Implementação de permissões de acesso por usuário e por menu
+
+Implemente um sistema completo de gerenciamento de usuários e permissões na aplicação interna de suporte da SuasVendas.
+
+O objetivo é permitir que o administrador principal defina quais menus, módulos e funcionalidades cada usuário poderá acessar, de acordo com sua função na equipe.
+
+Diferentes equipes utilizarão o mesmo sistema, mas nem todas precisarão acessar as mesmas funcionalidades.
+
+Por exemplo, os integrantes do processo comercial precisam utilizar o chat da equipe e os recursos pertinentes ao trabalho comercial, mas não precisam acessar o menu de algoritmos ou outras áreas restritas.
+
+Essa configuração deverá ser dinâmica, administrável pela interface e integrada ao banco de dados, sem depender de alterações manuais no código sempre que um usuário precisar de permissões diferentes.
+
+## 13.1. Gerenciamento de usuários
+
+Crie ou amplie o menu de administração de usuários, permitindo que o administrador principal:
+
+- Cadastre novos usuários.
+- Edite as informações dos usuários.
+- Ative ou desative contas.
+- Defina a equipe ou o departamento de cada usuário.
+- Atribua um perfil de acesso.
+- Configure permissões específicas para cada usuário.
+- Consulte quais permissões estão atribuídas a cada conta.
+- Redefina o acesso de um usuário por meio de um procedimento seguro.
+- Consulte o estado da conta, como ativa ou desativada.
+
+Cada usuário deverá possuir uma conta individual, identificada por seu próprio e-mail e protegida por autenticação.
+
+Não permita que usuários comuns criem contas administrativas ou elevem suas próprias permissões.
+
+## 13.2. Criação de perfis de acesso
+
+Implemente a possibilidade de criar perfis de acesso personalizados, associados às diferentes equipes da empresa.
+
+Exemplos de perfis que poderão ser configurados:
+
+- Administrador principal.
+- Supervisor.
+- Suporte técnico.
+- Equipe comercial.
+- Equipe técnica.
+- Usuário personalizado.
+
+Esses perfis são exemplos iniciais. O administrador deverá conseguir criar, editar e atribuir outros perfis conforme as necessidades da empresa.
+
+Cada perfil deverá possuir uma lista de permissões que determine quais menus e funcionalidades seus integrantes poderão acessar.
+
+Ao atribuir um perfil a um usuário, o sistema deverá aplicar as permissões correspondentes automaticamente.
+
+Também permita exceções individuais quando necessário, para que um usuário possa receber uma permissão adicional ou ter determinada permissão removida sem precisar modificar todos os integrantes do mesmo perfil.
+
+## 13.3. Permissões por menu
+
+Crie uma interface visual para o administrador configurar o acesso aos menus existentes no sistema.
+
+Apresente os menus cadastrados em uma lista organizada, com controles para permitir ou bloquear o acesso.
+
+A configuração deverá contemplar, conforme os módulos existentes na aplicação:
+
+- Dashboard ou página inicial.
+- Quadro de bugs.
+- Base de Conhecimento.
+- Chat da equipe.
+- Módulos.
+- Colunas.
+- Algoritmos.
+- Gerenciamento de usuários.
+- Configurações.
+- Notificações.
+- Outras áreas e funcionalidades existentes.
+
+Não crie menus fictícios apenas para preencher a lista. Identifique os menus e módulos realmente implementados no sistema.
+
+O administrador deverá poder selecionar, individualmente, quais menus estarão disponíveis para cada perfil ou usuário.
+
+### Exemplo de utilização
+
+Um usuário do processo comercial poderá ter acesso ao chat da equipe e às demais funcionalidades autorizadas para o departamento comercial, enquanto o menu de algoritmos ficará indisponível para ele.
+
+Já um integrante da equipe técnica poderá acessar o quadro de bugs, a Base de Conhecimento e o menu de algoritmos, conforme as permissões definidas.
+
+O administrador principal deverá poder ajustar essas configurações sem precisar alterar o código-fonte.
+
+## 13.4. Permissões por funcionalidade
+
+O controle de acesso não deverá se limitar à exibição dos menus.
+
+Para cada módulo, implemente permissões específicas, conforme as operações realmente existentes, como:
+
+- Visualizar.
+- Criar.
+- Editar.
+- Excluir.
+- Administrar.
+
+Por exemplo, um usuário poderá visualizar os bugs, mas não poderá excluí-los. Outro poderá criar e editar artigos da Base de Conhecimento, enquanto um terceiro poderá apenas consultar os artigos.
+
+No chat da equipe, as permissões também deverão respeitar a participação do usuário nas conversas, as regras de criação de chats e as regras de exclusão já implementadas.
+
+As permissões devem ser configuráveis e respeitar a estrutura atual da aplicação.
+
+## 13.5. Segurança no frontend e backend
+
+A implementação deverá proteger tanto a interface quanto os dados.
+
+### No frontend
+
+- Não exiba menus que o usuário não tenha autorização para acessar.
+- Não apresente botões de ações não permitidas.
+- Atualize a interface após mudanças de permissões, sem exigir alterações manuais no código.
+- Apresente uma mensagem adequada quando o usuário tentar acessar uma funcionalidade não autorizada.
+
+### No backend
+
+- Valide as permissões em todas as operações protegidas.
+- Bloqueie requisições não autorizadas, mesmo que sejam realizadas diretamente por uma API ou rota.
+- Impeça a visualização, alteração ou exclusão de dados sem autorização.
+- Verifique as permissões a cada operação relevante.
+- Não confie exclusivamente nas informações de permissão enviadas pelo frontend.
+
+Ocultar um menu não é suficiente para proteger uma funcionalidade. O backend deverá aplicar as mesmas regras de autorização.
+
+## 13.6. Proteção do administrador principal
+
+Mantenha a conta de administrador principal configurada anteriormente, utilizando o e-mail gabrielsouza@suasvendas.com.
+
+Essa conta deverá possuir acesso administrativo completo às funcionalidades de gerenciamento do sistema, conforme a política de segurança definida.
+
+Garanta que:
+
+- Usuários comuns não consigam alterar as permissões do administrador principal.
+- Nenhum usuário consiga promover a própria conta a administrador.
+- As operações de alteração de permissões sejam restritas a administradores autorizados.
+- A remoção ou desativação do último administrador principal não seja permitida sem um procedimento seguro de transferência da administração.
+- As alterações administrativas importantes possam ser registradas para auditoria.
+
+A senha inicial deverá continuar protegida e ser gerenciada por meio do mecanismo seguro de autenticação já definido para o sistema. Não a exponha no frontend ou no banco de dados em texto puro.
+
+## 13.7. Persistência das permissões
+
+Todas as configurações de acesso deverão ser armazenadas no banco de dados.
+
+Não implemente permissões fixas apenas no frontend ou em arquivos locais.
+
+Garanta que:
+
+- As permissões continuem funcionando após atualizar a página.
+- As configurações permaneçam após o logout e novo login.
+- As alterações realizadas pelo administrador sejam persistidas.
+- As permissões sejam aplicadas corretamente em diferentes dispositivos.
+- A desativação de uma conta impeça novos acessos.
+- Alterações relevantes de permissão sejam refletidas de maneira consistente nas sessões ativas, conforme a política de segurança da aplicação.
+
+Antes de criar tabelas ou modificar a estrutura existente, analise o banco de dados atual e implemente apenas as migrações necessárias, preservando os dados existentes.
+
+## 13.8. Interface de gerenciamento de permissões
+
+Crie uma interface clara e organizada para administrar os acessos.
+
+A interface deverá permitir:
+
+1. Selecionar um usuário ou perfil.
+2. Visualizar os menus disponíveis.
+3. Marcar os menus permitidos.
+4. Configurar as ações autorizadas em cada módulo.
+5. Salvar as alterações.
+6. Confirmar que as novas permissões foram aplicadas.
+
+Organize as permissões por categoria para evitar uma tela excessivamente extensa.
+
+Inclua uma identificação clara das permissões herdadas do perfil e das exceções configuradas individualmente.
+
+Mantenha a interface compatível com os temas claro e escuro, garantindo legibilidade dos textos, campos, botões e seletores.
+
+## 13.9. Testes obrigatórios de permissões
+
+Após implementar a funcionalidade, teste os seguintes cenários:
+
+- Criar um usuário comercial e liberar somente os menus autorizados.
+- Confirmar que esse usuário consegue acessar o chat da equipe.
+- Confirmar que o menu de algoritmos não aparece para esse usuário quando não houver autorização.
+- Tentar acessar diretamente uma rota restrita e verificar se o backend bloqueia o acesso.
+- Criar um usuário técnico com permissões diferentes.
+- Alterar as permissões de um usuário e verificar se elas são persistidas.
+- Desativar uma conta e confirmar que ela não consegue continuar acessando o sistema indevidamente.
+- Confirmar que usuários comuns não conseguem alterar suas próprias permissões.
+- Verificar se o administrador principal mantém o acesso administrativo.
+- Testar as funcionalidades nos temas claro e escuro.
+- Confirmar que os módulos e dados existentes continuam funcionando normalmente.
+
+## 13.10. Resultado esperado das permissões
+
+O sistema deverá possuir gerenciamento real de usuários, perfis e permissões, permitindo controlar exatamente quais menus e funcionalidades cada integrante da equipe poderá acessar.
+
+O administrador principal deverá conseguir configurar os acessos diretamente pela interface, sem depender de alterações no código.
+
+A implementação deverá ser integrada ao banco de dados, protegida no frontend e no backend, compatível com os recursos existentes e preparada para utilização real pela equipe da SuasVendas.
+
+# 14. Requisitos finais de implementação e entrega
+
+Execute todas as alterações descritas nos tópicos 12 e 13 no mesmo projeto, respeitando a arquitetura existente.
+
+Não implemente somente a interface visual. Todas as ações deverão funcionar, os dados deverão ser persistidos e as permissões deverão ser verificadas no backend.
+
+Antes de concluir:
+
+1. Revise o código e identifique conflitos entre as funcionalidades.
+2. Verifique se as alterações não prejudicaram os recursos existentes.
+3. Execute as migrações necessárias de forma segura.
+4. Teste os fluxos de criação, edição e exclusão de chats.
+5. Teste a recuperação de senha com envio real de e-mail.
+6. Teste os perfis, as permissões por menu e as permissões por operação.
+7. Teste o bloqueio de acessos não autorizados diretamente pelo backend.
+8. Verifique a compatibilidade com os temas claro e escuro.
+9. Confira se não existem erros críticos no frontend ou backend.
+10. Confirme que os dados existentes foram preservados.
+
+Não marque como concluída nenhuma funcionalidade que ainda dependa de implementação, credenciais, configuração ou testes.
+
+Se alguma etapa depender de uma configuração externa, identifique exatamente o que falta e o que precisa ser fornecido para finalizar.
+
+Ao término, apresente um relatório objetivo contendo:
+
+- As funcionalidades implementadas.
+- Os arquivos e componentes alterados.
+- As alterações realizadas no banco de dados.
+- Os testes executados e seus resultados.
+- As configurações externas ainda necessárias.
+- Os problemas que eventualmente permanecerem pendentes.
+
+# 15. Edição de participantes dos chats e fechamento automático de janelas
+
+Implemente as melhorias abaixo no sistema interno de suporte da SuasVendas, mantendo a integração com o banco de dados, as permissões existentes e o padrão visual da aplicação.
+
+## 15.1. Editar os participantes dos chats da equipe
+
+Além de criar e excluir conversas, o sistema deverá permitir editar os participantes de chats já existentes.
+
+Essa funcionalidade deverá ser exclusiva do administrador do sistema.
+
+### Interface
+
+Adicione uma opção de gerenciamento de participantes nos chats existentes.
+
+O administrador deverá conseguir:
+
+- Visualizar os participantes atuais da conversa.
+- Adicionar novos participantes.
+- Remover participantes existentes.
+- Salvar as alterações.
+- Visualizar a lista atualizada após a edição.
+
+A interface deverá ser intuitiva e seguir o padrão visual já utilizado no chat da equipe.
+
+### Regras de acesso
+
+A edição dos participantes deverá ser permitida somente ao administrador do sistema.
+
+Garanta que:
+
+- Usuários comuns não visualizem a opção de editar participantes.
+- Usuários comuns não consigam alterar os participantes por meio de requisições diretas ao backend.
+- O backend valide a permissão administrativa antes de executar qualquer alteração.
+- A lista de participantes seja atualizada corretamente no banco de dados.
+- As alterações sejam refletidas na interface sem exigir uma atualização manual da página.
+- Os novos participantes passem a ter acesso à conversa conforme as regras de autorização do chat.
+- Os participantes removidos percam o acesso à conversa e às suas mensagens e anexos, conforme a política de acesso e retenção do sistema.
+- A edição dos participantes não exclua mensagens, anexos ou o histórico da conversa.
+
+Não permita que um usuário comum consiga adicionar a si próprio ou a terceiros a uma conversa sem autorização.
+
+A funcionalidade deverá respeitar as permissões gerais do sistema e as regras de acesso aos chats.
+
+## 15.2. Fechar os menus de notificações e perfil ao clicar fora
+
+Atualmente, ao clicar no ícone de notificações (sino) ou no menu do perfil do usuário, a respectiva janela é aberta. Porém, ao clicar fora dela, a janela deverá ser fechada automaticamente.
+
+Corrija esse comportamento.
+
+### Menu de notificações
+
+Ao clicar no ícone de sino:
+
+- A janela de notificações deverá abrir normalmente.
+- Ao clicar novamente no ícone, a janela deverá fechar.
+- Ao clicar em qualquer área externa à janela de notificações, ela deverá fechar automaticamente.
+- Ao selecionar uma notificação, o sistema deverá executar a ação correspondente e fechar a janela quando apropriado.
+
+### Menu do perfil
+
+Ao clicar no ícone ou na imagem do perfil:
+
+- O menu do perfil deverá abrir normalmente.
+- Ao clicar novamente no ícone, o menu deverá fechar.
+- Ao clicar em qualquer área externa ao menu, ele deverá fechar automaticamente.
+- Ao selecionar uma opção do menu, a ação correspondente deverá ser executada e o menu deverá fechar.
+
+### Comportamento esperado
+
+Implemente o fechamento automático utilizando um mecanismo consistente de detecção de clique externo.
+
+Garanta que:
+
+- Cliques dentro da janela não provoquem seu fechamento indevido.
+- Cliques fora da janela provoquem o fechamento.
+- O comportamento funcione tanto no menu de notificações quanto no menu do perfil.
+- A navegação por teclado e a acessibilidade sejam preservadas.
+- O funcionamento seja consistente nos temas claro e escuro.
+- Não sejam criados conflitos entre os dois menus.
+
+Se o menu de notificações estiver aberto e o usuário clicar no perfil, o menu de notificações deverá fechar e o menu do perfil deverá abrir. O mesmo comportamento deverá ocorrer no sentido inverso.
+
+Evite que os dois menus permaneçam abertos simultaneamente.
+
+## 15.3. Testes obrigatórios
+
+Após implementar as funcionalidades, teste:
+
+1. O administrador consegue adicionar participantes a um chat existente.
+2. O administrador consegue remover participantes de um chat.
+3. As alterações são persistidas no banco de dados.
+4. Os novos participantes recebem acesso à conversa.
+5. Os participantes removidos perdem o acesso.
+6. Usuários comuns não conseguem editar participantes.
+7. O backend bloqueia tentativas não autorizadas de alteração.
+8. O menu de notificações fecha ao clicar fora.
+9. O menu do perfil fecha ao clicar fora.
+10. Clicar dentro dos menus não provoca fechamento indevido.
+11. Abrir um menu fecha automaticamente o outro.
+12. O comportamento funciona nos temas claro e escuro.
+
+**Resultado final esperado:** o sistema interno de suporte da SuasVendas deverá possuir interface legível, gerenciamento de chats funcional, recuperação de senha por e-mail operacional, controle granular de acesso por usuário, perfil, menu e funcionalidade, edição de participantes dos chats exclusiva do administrador e fechamento automático dos menus de notificações e perfil ao clicar fora.
+
+Todas as funcionalidades deverão estar integradas ao banco de dados, protegidas no frontend e no backend e preparadas para utilização real pela equipe da SuasVendas, sem comprometer os dados ou as funcionalidades existentes.

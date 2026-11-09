@@ -1,0 +1,1015 @@
+# PROMPT COMPLETO — Atualização, Correções e Melhorias do Sistema de Suporte
+
+## 1. Objetivo geral
+
+Quero realizar uma atualização completa na aplicação de suporte existente, melhorando a segurança, a organização, a aparência, a usabilidade, o gerenciamento de usuários, a Base de Conhecimento, o armazenamento de arquivos, o chat interno e a integração entre os módulos do sistema.
+
+Todas as alterações deverão ser implementadas diretamente no projeto atual, preservando os dados, as funcionalidades que já funcionam e a arquitetura existente sempre que possível.
+
+Não quero apenas mudanças visuais, telas demonstrativas, dados fictícios ou funcionalidades simuladas. Tudo deverá funcionar de verdade, estar integrado ao banco de dados, respeitar as permissões de cada usuário e apresentar resultados persistentes.
+
+Antes de iniciar, analise a estrutura do projeto, o banco de dados, a autenticação, os componentes da interface, os relacionamentos, o armazenamento de arquivos, os módulos, os perfis e as permissões existentes. Identifique a causa dos problemas antes de implementar as correções.
+
+Não recrie o projeto do zero sem necessidade. Reaproveite a infraestrutura existente quando for adequada e implemente as alterações de forma integrada.
+
+## 2. Login e segurança das sessões
+
+### 2.1. Remover a alternância direta entre usuários
+
+Atualmente, existe a possibilidade de alternar entre contas dentro do sistema. Quero remover completamente essa funcionalidade.
+
+Requisitos:
+
+- Cada integrante deverá acessar o sistema com seu próprio e-mail e senha.
+- A sessão deverá permanecer vinculada à conta autenticada.
+- Não deverá existir botão, menu ou atalho que permita trocar de usuário sem uma nova autenticação.
+- Para acessar outra conta, será obrigatório clicar em “Sair” e realizar um novo login.
+- A regra deverá valer para administradores, supervisores, suporte e equipe técnica.
+- A remoção da alternância não poderá eliminar o gerenciamento administrativo de contas.
+
+O administrador deverá continuar podendo cadastrar, visualizar, editar, bloquear, desbloquear e excluir usuários, além de iniciar a redefinição de senhas, conforme as permissões administrativas existentes.
+
+### 2.2. Corrigir o preenchimento automático do login
+
+A tela de login deverá iniciar com os campos vazios sempre que o usuário retornar a ela após sair.
+
+- Campo de e-mail vazio.
+- Campo de senha vazio.
+- Nenhuma credencial de outro usuário preenchida pela aplicação.
+- Nenhum e-mail ou senha definido como valor padrão no código.
+- Nenhuma credencial de demonstração carregada automaticamente.
+- Nenhuma informação sensível de sessões anteriores reutilizada indevidamente.
+
+Investigue os estados iniciais dos componentes, os dados persistidos no navegador e qualquer lógica que esteja preenchendo os campos.
+
+Configure a aplicação para não preencher credenciais por conta própria. Considere que navegadores e gerenciadores externos de senhas podem ter mecanismos independentes de preenchimento automático, que não podem ser totalmente controlados pela aplicação.
+
+### 2.3. Encerramento seguro da sessão
+
+Ao clicar em “Sair”, o sistema deverá:
+
+1. Encerrar a sessão autenticada.
+2. Invalidar os tokens de sessão conforme a arquitetura utilizada.
+3. Limpar os dados sensíveis da sessão mantidos em memória.
+4. Redirecionar para a tela de login.
+5. Apresentar os campos de login vazios.
+6. Impedir o acesso às páginas privadas sem uma sessão válida.
+7. Impedir que o botão de voltar do navegador permita reutilizar uma sessão encerrada.
+
+A limpeza deverá atingir apenas os dados relacionados à sessão. Não apague artigos, bugs, mensagens, módulos, perfis, preferências ou arquivos.
+
+A autenticação e as permissões deverão ser validadas no backend, e não apenas pela interface.
+
+Essa proteção deverá valer para o Dashboard, Kanban, Base de Conhecimento, chat, módulos, usuários, perfis e anexos.
+
+## 3. Perfil individual dos usuários
+
+### 3.1. Criar um menu de perfil
+
+Adicione um menu de perfil na interface principal, acessível por meio da foto ou de um ícone de usuário no cabeçalho.
+
+O menu deverá permitir visualizar as informações da própria conta e acessar a opção “Meu perfil” ou “Editar perfil”.
+
+Cada perfil deverá estar vinculado ao identificador único do usuário no banco de dados.
+
+### 3.2. Foto de perfil
+
+Cada usuário poderá:
+
+- Selecionar uma imagem diretamente do computador.
+- Visualizar a imagem antes de salvar.
+- Confirmar ou cancelar a alteração.
+- Substituir a foto atual.
+- Remover a foto e voltar ao avatar padrão.
+- Visualizar a foto atual no menu de perfil.
+
+A foto deverá aparecer no cabeçalho, no perfil, nas mensagens do chat e nas demais áreas em que a identificação do integrante seja útil.
+
+Se o usuário não tiver foto, exiba um avatar padrão, preferencialmente com as iniciais do nome.
+
+A imagem deverá ser armazenada de maneira persistente e continuar disponível após atualizar a página, sair da conta ou acessar o sistema em outro dispositivo autorizado.
+
+### 3.3. Edição das informações pessoais
+
+No menu “Meu perfil”, permita editar os seguintes campos, conforme a arquitetura e as regras de segurança existentes:
+
+- Nome de exibição.
+- Foto de perfil.
+- E-mail da conta, quando permitido.
+- Outras informações pessoais básicas já existentes no cadastro.
+
+As alterações deverão ser salvas no banco de dados e refletidas nas áreas relacionadas, incluindo chat, menções e identificação das atividades.
+
+Caso o e-mail possa ser alterado, implemente as validações necessárias, incluindo confirmação do novo endereço ou reautenticação quando exigidas pelo sistema.
+
+### 3.4. Restringir a edição ao próprio usuário
+
+Cada usuário poderá editar somente o próprio perfil pessoal.
+
+A validação deverá acontecer no backend. Não deverá ser possível editar o perfil de outra pessoa modificando um identificador na URL, nos parâmetros da requisição ou no navegador.
+
+O gerenciamento administrativo de contas deverá continuar separado da edição pessoal.
+
+O usuário não poderá alterar o próprio nível de acesso, permissões, função administrativa, status da conta ou outros campos restritos.
+
+O administrador continuará podendo gerenciar as contas conforme suas permissões específicas.
+
+### 3.5. Segurança e persistência
+
+Valide os arquivos enviados para as fotos, incluindo formato real, tamanho e conteúdo. Não confie apenas na extensão do arquivo.
+
+Depois de salvar as alterações:
+
+- Atualize a interface sem exigir novo login, quando possível.
+- Preserve os dados após atualizar a página.
+- Mantenha as informações após logout e novo login.
+- Garanta a disponibilidade nos dispositivos autorizados.
+- Exiba mensagens claras de sucesso ou falha.
+
+Não informe que uma alteração foi concluída quando houver erro no salvamento ou no upload.
+
+## 4. Gerenciamento de usuários e permissões administrativas
+
+### 4.1. Acesso administrativo completo aos usuários
+
+Quero que o administrador tenha acesso à área de gerenciamento de usuários, com uma visualização centralizada de todas as contas cadastradas no sistema.
+
+O administrador deverá conseguir consultar os dados disponíveis de cada usuário, respeitando as regras de segurança e a arquitetura atual, incluindo, quando existentes:
+
+- Nome.
+- E-mail.
+- Foto de perfil.
+- Função ou perfil de acesso.
+- Status da conta.
+- Data de criação.
+- Último acesso, quando registrado.
+- Demais informações administrativas já armazenadas no sistema.
+
+Não exponha senhas em texto puro, tokens, segredos de autenticação ou outras credenciais sensíveis. Quando for necessário redefinir uma senha, utilize o mecanismo seguro de recuperação ou redefinição disponível na aplicação.
+
+### 4.2. Ações permitidas ao administrador
+
+Conforme as permissões administrativas existentes, o administrador deverá poder:
+
+- Visualizar a lista completa de usuários.
+- Pesquisar e filtrar usuários.
+- Abrir os detalhes de cada conta.
+- Criar novos usuários.
+- Editar informações administrativas.
+- Alterar funções e níveis de acesso.
+- Conceder ou revogar permissões.
+- Bloquear e desbloquear contas.
+- Iniciar a redefinição de senha.
+- Excluir contas, quando autorizado.
+- Consultar o status e outras informações relevantes para a administração.
+
+As ações deverão ser funcionais, persistentes e conectadas ao banco de dados real.
+
+Antes de excluir uma conta, verifique seus relacionamentos com bugs, mensagens, artigos, anexos e registros de auditoria. Solicite confirmação e preserve o histórico necessário. Não exclua automaticamente dados compartilhados ou registros que precisem continuar disponíveis.
+
+### 4.3. Restringir o acesso dos demais usuários
+
+Usuários comuns, integrantes do suporte, supervisores e equipe técnica deverão visualizar e editar apenas as informações permitidas para suas funções.
+
+Por padrão:
+
+- Cada usuário poderá visualizar e editar o próprio perfil pessoal.
+- Usuários comuns não poderão consultar indiscriminadamente dados privados de todos os integrantes.
+- Usuários sem permissão administrativa não poderão criar, excluir, bloquear ou gerenciar contas alheias.
+- Nenhum usuário poderá elevar o próprio nível de acesso.
+- Nenhum usuário poderá alterar as próprias permissões administrativas.
+- Informações restritas deverão ser protegidas também nas requisições ao backend.
+
+Os acessos de supervisores, suporte e equipe técnica deverão respeitar as permissões específicas já definidas no projeto. Não conceda permissões novas automaticamente apenas por causa da função.
+
+### 4.4. Separar “Meu perfil” de “Gerenciar usuários”
+
+Mantenha duas áreas distintas:
+
+1. “Meu perfil”: permite que o usuário consulte e edite as próprias informações pessoais autorizadas.
+2. “Gerenciar usuários”: área administrativa que permite ao administrador consultar e administrar as contas conforme suas permissões.
+
+Não misture as configurações pessoais com as ações administrativas.
+
+A interface deverá exibir as opções de gerenciamento somente para usuários autorizados, mas a segurança real deverá ser garantida no backend, mesmo que alguém tente acessar as rotas ou executar requisições manualmente.
+
+### 4.5. Integridade e auditoria
+
+As operações administrativas deverão:
+
+- Validar permissões no backend.
+- Validar os dados enviados.
+- Impedir alterações não autorizadas.
+- Preservar relacionamentos importantes.
+- Registrar ações administrativas relevantes quando houver suporte a auditoria.
+- Exibir mensagens claras de sucesso e falha.
+- Evitar alterações parciais quando uma operação falhar.
+
+## 5. Tema claro e tema escuro
+
+Quero adicionar ao sistema duas opções completas de aparência: tema claro e tema escuro.
+
+### 5.1. Alternância de temas
+
+Disponibilize um controle visível e fácil de encontrar para alternar entre:
+
+- Tema claro.
+- Tema escuro.
+
+O controle poderá ficar no menu de perfil ou nas configurações da conta. Utilize ícones intuitivos, como sol e lua, acompanhados de uma identificação clara da opção selecionada.
+
+A alternância deverá ocorrer sem recarregar a página desnecessariamente.
+
+### 5.2. Aplicação consistente em todo o sistema
+
+Os dois temas deverão funcionar em todas as áreas da aplicação, incluindo:
+
+- Login.
+- Dashboard.
+- Menu lateral e cabeçalho.
+- Kanban de bugs.
+- Base de Conhecimento.
+- Chat interno e menções.
+- Cadastro e edição de módulos.
+- Cadastro e edição de usuários.
+- Perfil individual.
+- Formulários, tabelas, filtros, menus, janelas, notificações e anexos.
+
+No tema claro, utilize fundos claros, textos escuros e contrastes confortáveis.
+
+No tema escuro, utilize fundos escuros, superfícies diferenciadas e textos claros, mantendo uma aparência moderna e legível.
+
+Adapte também bordas, campos de formulário, cartões, botões, ícones, menus suspensos, mensagens de sucesso, alertas, estados de erro e elementos selecionados.
+
+Evite componentes que permaneçam com cores incompatíveis com o tema ativo.
+
+### 5.3. Persistência da preferência
+
+A preferência de tema deverá ser salva individualmente para cada usuário autenticado.
+
+Quando o usuário sair e entrar novamente, a preferência deverá ser mantida. Se acessar outro dispositivo autorizado, o sistema deverá recuperar a configuração salva, conforme a arquitetura existente.
+
+Para usuários novos, defina um tema padrão adequado. Se houver suporte à preferência de aparência do sistema operacional, ela poderá ser utilizada como opção inicial, sem impedir que o usuário escolha manualmente.
+
+### 5.4. Requisitos de qualidade
+
+- Não implemente os temas apenas mudando o fundo da página.
+- Centralize as cores e os estilos para evitar inconsistências.
+- Preserve a identidade visual da aplicação.
+- Garanta contraste e legibilidade nos dois temas.
+- Verifique estados de foco, seleção, carregamento, desabilitado e erro.
+- Evite duplicar componentes inteiros apenas para oferecer os dois temas.
+
+A preferência deverá ser aplicada de forma consistente e testada em toda a aplicação.
+
+## 6. Reorganização da Base de Conhecimento para a rotina do suporte
+
+Quero uma Base de Conhecimento mais limpa, intuitiva, rápida e prática, pensada especificamente para a realidade atual da equipe de suporte ao cliente.
+
+O objetivo é permitir que o atendente encontre rapidamente procedimentos, orientações e soluções enquanto conversa com o cliente, sem precisar abrir vários artigos ou ler grandes blocos de texto para descobrir a informação necessária.
+
+A Base de Conhecimento deverá funcionar como uma ferramenta de consulta durante o atendimento, priorizando agilidade, clareza e facilidade de localização.
+
+### 6.1. Simplificar a interface
+
+- Dar destaque ao campo de pesquisa.
+- Organizar os filtros e módulos de maneira clara.
+- Exibir inicialmente apenas as informações essenciais.
+- Ocultar descrições extensas e informações administrativas secundárias.
+- Utilizar seções expansíveis para detalhes complementares.
+- Disponibilizar ações como “Ver detalhes”, “Visualizar rapidamente”, “Expandir” e “Mostrar mais”.
+- Evitar excesso de cartões, etiquetas, indicadores e informações repetidas.
+- Utilizar títulos claros, resumos curtos e espaçamento adequado.
+
+Não remova conteúdos úteis já cadastrados. Reorganize apenas a apresentação.
+
+### 6.2. Organização dos artigos
+
+Na listagem inicial, exiba:
+
+- Título.
+- Módulo relacionado.
+- Resumo curto.
+- Palavras-chave relevantes, quando úteis.
+- Tipo de orientação, quando disponível e relevante, como procedimento, configuração, solução de erro ou instrução.
+
+Ao abrir um artigo, apresente o conteúdo completo, incluindo procedimentos, orientações, imagens e documentos anexados.
+
+Informações administrativas, como autor, datas e histórico de alterações, poderão ficar em uma seção secundária ou expansível.
+
+Em artigos longos, organize o conteúdo em seções que possam ser expandidas e recolhidas.
+
+Ao retornar à lista, preserve a pesquisa e os filtros aplicados.
+
+### 6.3. Visualização rápida das informações
+
+Disponibilize uma opção como “Visualizar rapidamente” ou “Ver resumo”, permitindo que o atendente consulte as informações principais sem precisar abrir o artigo completo.
+
+Quando essas informações existirem no artigo, a visualização rápida deverá apresentar:
+
+- Problema ou situação relatada pelo cliente.
+- Causa conhecida.
+- Resumo da solução.
+- Procedimento recomendado.
+- Caminho dos menus dentro do sistema.
+- Observações importantes.
+- Limitações conhecidas.
+- Necessidade de encaminhamento para outro setor ou para a equipe técnica.
+
+A visualização rápida não deverá substituir nem alterar o artigo original. O conteúdo completo deverá continuar disponível por meio de uma opção como “Abrir artigo completo”.
+
+Não invente causas, soluções ou procedimentos que não estejam cadastrados no artigo.
+
+### 6.4. Estrutura dos artigos para facilitar o atendimento
+
+Na criação e edição dos artigos, permita organizar as informações em campos ou seções que facilitem a consulta durante o atendimento.
+
+Sempre que adequado, utilize a seguinte estrutura:
+
+- Título: nome claro do problema ou procedimento.
+- Módulo: área do sistema à qual o conteúdo pertence.
+- Palavras-chave: termos que o atendente poderá utilizar na pesquisa.
+- Situação: descrição breve do problema ou da dúvida.
+- Causa: motivo conhecido, quando identificado.
+- Solução: procedimento necessário para resolver a situação.
+- Caminho no sistema: menus e opções que deverão ser acessados.
+- Observações: limitações, requisitos ou cuidados importantes.
+- Encaminhamento: orientação sobre quando será necessário acionar outro setor ou a equipe técnica.
+- Anexos: imagens, documentos e outros materiais de apoio.
+
+Esses campos deverão ser flexíveis. Não obrigue o preenchimento de informações que não se aplicam a determinado artigo.
+
+Preserve os artigos existentes e permita reorganizá-los gradualmente, sem perder seu conteúdo. Caso a arquitetura atual utilize um editor de texto livre, mantenha a compatibilidade com os artigos existentes.
+
+## 7. Cadastro centralizado de módulos e correção da integração com a Base de Conhecimento
+
+### 7.1. Utilizar um único cadastro centralizado
+
+Existe um menu chamado “Módulos”, utilizado no Kanban de bugs, mas os módulos não estão sendo disponibilizados corretamente na Base de Conhecimento.
+
+Corrija esse problema definitivamente.
+
+Deverá existir um cadastro centralizado de módulos, utilizado por todas as funcionalidades relacionadas.
+
+Quando um administrador criar um módulo, ele deverá ficar disponível automaticamente em:
+
+- Base de Conhecimento.
+- Cadastro e edição de artigos.
+- Seleção do módulo nos artigos.
+- Filtros da Base de Conhecimento.
+- Kanban de bugs.
+- Cadastro e edição de bugs.
+- Relatórios e demais áreas relacionadas.
+
+Por exemplo, ao criar o módulo “Pedidos” no menu “Módulos”, ele deverá aparecer automaticamente na seleção de módulos ao criar ou editar um artigo, além de continuar disponível no Kanban.
+
+Não utilize listas estáticas, duplicadas ou independentes para cada área.
+
+### 7.2. Corrigir especificamente o seletor de módulos dos artigos
+
+Investigue por que os módulos cadastrados no menu “Módulos” não aparecem no seletor utilizado na criação e edição dos artigos da Base de Conhecimento.
+
+Verifique:
+
+- Se o formulário de artigos consulta a tabela ou fonte de dados correta.
+- Se existem listas fixas ou opções codificadas diretamente no frontend.
+- Se o carregamento dos módulos ocorre corretamente.
+- Se há filtros que excluem módulos válidos indevidamente.
+- Se os identificadores e relacionamentos utilizados pelo formulário correspondem aos registros reais do banco de dados.
+- Se existem erros nas requisições, consultas ou políticas de acesso.
+- Se a interface não está utilizando dados antigos ou um estado desatualizado.
+
+Corrija a causa real do problema. Não resolva apenas adicionando manualmente opções ao seletor.
+
+Após criar, editar ou arquivar um módulo, as áreas relacionadas deverão refletir a alteração de maneira consistente, sem exigir recriação dos artigos.
+
+### 7.3. Preservar relacionamentos e dados
+
+Todas as áreas deverão consultar o mesmo cadastro centralizado, utilizando os identificadores reais dos módulos no banco de dados.
+
+Garanta que:
+
+- Os módulos existentes sejam preservados.
+- Os novos módulos apareçam automaticamente.
+- A edição de um módulo seja refletida nas áreas relacionadas.
+- Os artigos permaneçam associados aos módulos corretos.
+- Os filtros utilizem os relacionamentos reais.
+- Os bugs existentes continuem funcionando.
+- Os módulos arquivados sejam tratados adequadamente.
+
+Ao excluir ou arquivar um módulo, não apague automaticamente os artigos ou bugs associados. Solicite confirmação e ofereça uma forma segura de tratar os registros relacionados.
+
+Se houver registros antigos com relacionamentos inconsistentes, identifique-os e corrija-os por meio de uma migração segura ou de um procedimento controlado, preservando os dados existentes.
+
+## 8. Pesquisa por palavras-chave na Base de Conhecimento
+
+### 8.1. Campo de pesquisa destacado
+
+Adicione um campo de pesquisa destacado no topo da Base de Conhecimento.
+
+A pesquisa deverá ser rápida, intuitiva e fácil de utilizar durante o atendimento ao cliente.
+
+O atendente deverá conseguir digitar uma palavra, uma expressão, parte de uma mensagem de erro ou uma descrição do problema relatado pelo cliente e receber artigos relevantes.
+
+### 8.2. Conteúdos considerados na pesquisa
+
+A pesquisa deverá considerar:
+
+- Título do artigo.
+- Palavras-chave cadastradas.
+- Descrição e resumo.
+- Conteúdo completo.
+- Nome do módulo.
+- Termos técnicos.
+- Mensagens de erro.
+- Nomes de funcionalidades e procedimentos.
+- Situações e soluções descritas nos artigos.
+
+Por exemplo, ao pesquisar “pedido não sincroniza”, o sistema deverá encontrar artigos relacionados à sincronização quando o conteúdo ou as palavras-chave forem compatíveis.
+
+Outros exemplos de pesquisa:
+
+- “erro ao importar planilha”.
+- “produto não aparece”.
+- “problema na comissão”.
+- “nota fiscal rejeitada”.
+- “cliente não consegue acessar”.
+- “alterar preço do produto”.
+- “configurar vendedor”.
+- “pedido não aparece no aplicativo”.
+
+Mesmo quando o atendente não souber o título exato do artigo, o sistema deverá apresentar os conteúdos relacionados aos termos pesquisados, desde que sejam compatíveis com os dados cadastrados.
+
+### 8.3. Comportamento da pesquisa
+
+A pesquisa deverá:
+
+- Aceitar correspondências parciais.
+- Ignorar diferenças entre letras maiúsculas e minúsculas.
+- Ignorar diferenças de acentuação, quando possível.
+- Permitir pesquisar por mais de uma palavra.
+- Considerar termos presentes em diferentes partes do artigo.
+- Exibir resultados relevantes sem exigir correspondência exata com o título.
+- Permitir limpar a pesquisa rapidamente.
+- Funcionar em conjunto com os filtros por módulo.
+
+Utilize um mecanismo de pesquisa compatível com a infraestrutura atual e evite carregar todos os artigos completos no navegador desnecessariamente.
+
+Não implemente uma pesquisa que consulte somente o título, ignorando as palavras-chave e o conteúdo dos artigos.
+
+### 8.4. Cadastro e edição das palavras-chave
+
+Na criação e edição dos artigos, disponibilize um campo específico para adicionar, editar e remover palavras-chave.
+
+Exemplo:
+
+- Título: Como resolver problemas de sincronização de pedidos.
+- Módulo: Pedidos.
+- Palavras-chave: sincronização, pedidos, aplicativo, atualização, erro, conexão.
+
+Permita cadastrar várias palavras-chave de forma simples, por exemplo, digitando um termo e pressionando Enter ou utilizando um separador apropriado.
+
+As palavras-chave deverão ser armazenadas no banco de dados e utilizadas efetivamente na pesquisa.
+
+Ao editar as palavras-chave, os resultados deverão ser atualizados de acordo com os dados salvos.
+
+### 8.5. Resultados e filtros
+
+Cada resultado deverá apresentar:
+
+- Título do artigo.
+- Módulo relacionado.
+- Resumo curto.
+- Palavras-chave relevantes.
+- Destaque dos termos encontrados, quando possível.
+- Prévia da solução, quando disponível.
+
+Ao selecionar um resultado, o usuário deverá abrir diretamente o artigo completo ou sua visualização rápida.
+
+A pesquisa deverá funcionar em conjunto com os filtros, permitindo, por exemplo, pesquisar “sincronização” e restringir os resultados ao módulo “Pedidos”.
+
+Inclua opções para limpar a pesquisa e os filtros, além de mensagens para carregamento, ausência de resultados e falhas.
+
+### 8.6. Priorização dos resultados
+
+Organize os resultados para apresentar primeiro os artigos mais relevantes para os termos pesquisados.
+
+Considere, quando suportado pela infraestrutura atual:
+
+1. Correspondências no título.
+2. Correspondências nas palavras-chave.
+3. Correspondências no resumo e na descrição.
+4. Correspondências no conteúdo completo.
+5. Correspondências no módulo relacionado.
+
+Quando vários resultados forem relevantes, apresente-os de maneira clara, sem ocultar conteúdos potencialmente úteis.
+
+Não utilize relevância inventada nem apresente resultados como correspondências se eles não tiverem relação com o conteúdo pesquisado.
+
+### 8.7. Experiência de uso durante o atendimento
+
+A interface deverá ser rápida e prática para utilização simultânea ao atendimento do cliente.
+
+- Mantenha o campo de pesquisa facilmente acessível.
+- Evite exigir muitos cliques para encontrar uma solução.
+- Permita abrir e fechar a visualização rápida sem perder os termos pesquisados.
+- Preserve a pesquisa e os filtros ao abrir um artigo e retornar à lista.
+- Destaque os termos encontrados nos resultados, quando possível.
+- Permita copiar trechos úteis do procedimento, quando apropriado.
+- Preserve imagens, documentos e demais anexos relacionados ao artigo.
+- Apresente mensagens claras quando não houver resultados.
+- Garanta uma boa experiência em diferentes tamanhos de tela.
+
+O objetivo é que o atendente consiga localizar uma orientação, consultar o caminho correto dentro do sistema e explicar a solução ao cliente com rapidez, sem interromper desnecessariamente o atendimento.
+
+## 9. Anexos na Base de Conhecimento
+
+### 9.1. Seleção e envio de arquivos
+
+Adicione uma área de anexos ao formulário de criação e edição dos artigos.
+
+Disponibilize:
+
+- Botão “Anexar arquivo”.
+- Botão “Adicionar imagem”.
+- Seleção direta pelo computador.
+- Seleção de uma ou várias imagens.
+- Upload de documentos e outros formatos permitidos.
+- Arrastar e soltar arquivos.
+- Colar imagens com Ctrl+V.
+- Pré-visualização antes de salvar.
+- Remoção de anexos antes de salvar.
+- Inclusão de novos anexos em artigos existentes.
+- Remoção de anexos existentes conforme as permissões.
+
+A área deverá ficar próxima ao editor de conteúdo.
+
+### 9.2. Colagem de imagens
+
+Permita copiar uma imagem de um site, captura de tela ou outro aplicativo e pressionar Ctrl+V no editor.
+
+A imagem deverá ser inserida visualmente no conteúdo ou adicionada como anexo, conforme o funcionamento do editor. Não deverá aparecer apenas um endereço de arquivo.
+
+Caso determinado formato não possa ser colado, oriente o usuário a utilizar o botão de seleção de arquivos.
+
+### 9.3. Visualização dos anexos
+
+Para imagens:
+
+- Exibir pré-visualização no conteúdo ou em uma galeria.
+- Permitir ampliar a imagem.
+- Preservar a proporção original.
+
+Para documentos:
+
+- Exibir nome, formato e tamanho, quando disponíveis.
+- Permitir visualizar ou baixar.
+- Informar quando o formato não puder ser visualizado diretamente no navegador.
+
+Os anexos deverão permanecer associados ao artigo após alterações no título, conteúdo, palavras-chave ou módulo.
+
+A edição de um artigo não poderá apagar anexos que devam ser preservados.
+
+## 10. Chat interno: anexos, menções individuais e menção de todos
+
+Quero aprimorar o chat interno para facilitar a comunicação entre os colaboradores, permitindo o envio de arquivos e imagens, mantendo as menções individuais existentes e adicionando uma opção para mencionar todos os colaboradores de uma só vez.
+
+### 10.1. Envio de arquivos e imagens
+
+Permita compartilhar arquivos diretamente nas conversas, sem depender de links externos.
+
+Implemente:
+
+- Botão de anexar arquivo ao lado do campo de mensagem.
+- Seleção pelo gerenciador de arquivos.
+- Envio de imagens e documentos permitidos.
+- Arrastar e soltar arquivos.
+- Colar imagens com Ctrl+V.
+- Pré-visualização antes do envio.
+- Remoção de anexos antes de enviar.
+- Envio de mensagens com um ou vários arquivos.
+- Exibição dos anexos dentro da conversa.
+- Download de arquivos recebidos.
+- Visualização ampliada das imagens.
+- Indicador de envio em andamento.
+- Mensagens claras em caso de falha.
+
+Exemplo: um integrante poderá escrever “Segue o print do erro encontrado no cadastro de produtos” e anexar a captura de tela diretamente à mensagem.
+
+### 10.2. Preservar menções individuais e notificações
+
+Os anexos deverão funcionar em conjunto com as funcionalidades existentes:
+
+- Menções com @.
+- Notificações internas.
+- Área “Menções”.
+- Acesso à mensagem original.
+
+Quando uma mensagem com anexos mencionar outro integrante, a notificação deverá funcionar normalmente.
+
+Ao acessar a mensagem pela área “Menções”, o usuário deverá conseguir visualizar seu conteúdo e os anexos, desde que tenha autorização.
+
+Os arquivos deverão permanecer vinculados às mensagens após atualizar a página ou consultar a conversa posteriormente.
+
+Não remova nem prejudique o funcionamento das menções individuais já existentes.
+
+### 10.3. Nova funcionalidade: mencionar todos os colaboradores com @todos
+
+Quero adicionar ao chat interno uma funcionalidade que permita mencionar todos os colaboradores de uma só vez, utilizando uma opção especial como `@todos` ou `@all`.
+
+O objetivo é facilitar a comunicação interna, permitindo que um integrante envie um aviso ou comunicado direcionado a toda a equipe sem precisar mencionar cada colaborador individualmente.
+
+#### 10.3.1. Opção de mencionar todos
+
+No campo de mensagem do chat, ao digitar `@`, o sistema deverá apresentar as opções de menção já existentes e incluir uma opção especial:
+
+- `@todos` — mencionar todos os colaboradores autorizados.
+- Menções individuais — continuar permitindo mencionar um colaborador específico.
+
+Ao selecionar `@todos`, o sistema deverá inserir a menção no campo de mensagem.
+
+A funcionalidade deverá ser intuitiva e seguir o mesmo padrão visual das menções individuais já existentes.
+
+A opção deverá aparecer de maneira clara na lista de sugestões de menção. Não deverá ser necessário digitar manualmente o nome de cada integrante.
+
+#### 10.3.2. Notificações para todos os colaboradores
+
+Quando uma mensagem contendo `@todos` for enviada:
+
+- Todos os colaboradores ativos e autorizados a participar daquele chat deverão ser mencionados.
+- Cada colaborador deverá receber uma notificação individual da menção.
+- A notificação deverá direcionar o usuário para a mensagem original.
+- A mensagem deverá aparecer corretamente na área de “Menções” de cada destinatário.
+- O sistema deverá identificar quem enviou a mensagem.
+- O sistema deverá preservar o conteúdo completo da mensagem e seus anexos, quando existirem.
+
+Não envie notificações duplicadas para o mesmo colaborador caso ele já tenha sido mencionado individualmente na mesma mensagem.
+
+O próprio autor da mensagem não deverá receber uma notificação de menção para si mesmo, salvo se esse já for o comportamento definido pelo sistema.
+
+#### 10.3.3. Definição dos destinatários
+
+A menção de todos deverá considerar os colaboradores ativos e autorizados a participar do chat ou canal em que a mensagem foi enviada.
+
+Não inclua:
+
+- Usuários bloqueados.
+- Contas inativas.
+- Usuários sem permissão para acessar a conversa.
+- Contas excluídas.
+
+Se o sistema possuir diferentes equipes, grupos ou canais, a menção deverá respeitar o contexto da conversa.
+
+Em um chat geral, deverá mencionar todos os colaboradores autorizados no chat geral. Em um canal restrito, deverá mencionar somente os integrantes daquele canal.
+
+Não permita que a menção `@todos` seja utilizada para enviar notificações a usuários que não possuem acesso à conversa.
+
+#### 10.3.4. Exibição da mensagem
+
+A mensagem deverá ser exibida normalmente no chat, com a menção `@todos` destacada visualmente.
+
+Ao visualizar a mensagem, deverá ficar claro que ela foi direcionada a todos os participantes autorizados.
+
+A funcionalidade deverá ser compatível com:
+
+- Mensagens de texto.
+- Mensagens com imagens.
+- Mensagens com documentos.
+- Mensagens com múltiplos anexos.
+- Menções individuais já existentes.
+- Notificações internas.
+- Área “Menções”.
+
+#### 10.3.5. Segurança e persistência
+
+A identificação dos destinatários deverá ocorrer no backend, utilizando os usuários ativos e as permissões reais do sistema.
+
+Não confie apenas na lista de destinatários enviada pelo frontend.
+
+As notificações deverão ser persistidas no banco de dados e permanecer disponíveis após atualizar a página, sair da conta ou entrar novamente.
+
+A implementação deverá evitar notificações duplicadas e respeitar as permissões de acesso às conversas.
+
+A menção de todos deverá utilizar o mecanismo de menções e notificações já existente, sem criar um mecanismo paralelo que possa gerar inconsistências.
+
+## 11. Armazenamento e segurança dos arquivos
+
+### 11.1. Armazenamento persistente
+
+Não armazene os arquivos apenas na memória do navegador ou em variáveis temporárias.
+
+Utilize a infraestrutura de armazenamento existente ou um serviço apropriado.
+
+O banco de dados deverá armazenar os metadados e relacionamentos dos anexos, enquanto os arquivos deverão permanecer em armazenamento adequado.
+
+Conforme a arquitetura, cada anexo deverá ter:
+
+- Identificador único.
+- Nome original.
+- Referência ao arquivo armazenado.
+- Tipo de arquivo.
+- Tamanho.
+- Data de envio.
+- Usuário responsável.
+- Relacionamento com o artigo ou a mensagem.
+
+Os arquivos deverão continuar disponíveis após atualizar a página, sair da conta, entrar novamente ou acessar o sistema por outro dispositivo autorizado.
+
+Não exponha arquivos privados por URLs públicas permanentes sem controle de acesso. Utilize autorização ou links temporários seguros quando necessário.
+
+### 11.2. Validação e exclusão
+
+Implemente validações no frontend e no backend:
+
+- Limite de tamanho por arquivo.
+- Limite de quantidade de arquivos por envio, quando necessário.
+- Lista de formatos permitidos.
+- Validação do tipo real do arquivo, e não apenas da extensão.
+- Proteção contra arquivos maliciosos.
+- Tratamento seguro dos nomes.
+- Controle de acesso para visualizar, baixar e excluir.
+- Mensagens claras para arquivos incompatíveis ou cujo envio falhou.
+
+Ao remover um anexo, atualize o relacionamento e trate o arquivo armazenado conforme as regras de retenção.
+
+Não exclua arquivos que ainda estejam sendo utilizados por outros registros. Evite arquivos órfãos e não remova anexos durante logout, atualização da página ou edição de campos não relacionados.
+
+## 12. Melhorias no Kanban de bugs
+
+Quero aprimorar o cadastro e a visualização dos bugs no Kanban, permitindo identificar claramente qual cliente relatou cada problema e qual é o e-mail de contato.
+
+### 12.1. Adicionar os dados do cliente ao cadastro do bug
+
+No formulário de criação e edição de bugs, adicione dois campos específicos:
+
+- Nome do cliente.
+- E-mail do cliente.
+
+Esses campos deverão permitir registrar a pessoa ou empresa que relatou o problema.
+
+O campo “Nome do cliente” deverá aceitar o nome da pessoa ou da empresa. O campo “E-mail do cliente” deverá validar o formato do endereço informado.
+
+Os campos deverão ser salvos no banco de dados e vinculados ao bug correspondente.
+
+Não utilize o nome ou o e-mail do integrante responsável pelo bug como substituto dos dados do cliente. O cliente que relatou o problema e o colaborador que registrou ou está tratando o bug são informações diferentes e deverão permanecer separadas.
+
+### 12.2. Exibir as informações no Kanban
+
+Nos cartões do Kanban, exiba de forma organizada o nome do cliente associado ao bug.
+
+O e-mail poderá ser exibido em uma área secundária do cartão ou nos detalhes do bug, evitando excesso de informação na visualização principal.
+
+Ao abrir um cartão, os detalhes deverão apresentar claramente:
+
+- Título do bug.
+- Descrição do problema.
+- Módulo relacionado.
+- Nome do cliente.
+- E-mail do cliente.
+- Status e coluna atual.
+- Prioridade, quando existente.
+- Responsável pelo atendimento ou desenvolvimento, quando existente.
+- Datas e demais informações já disponíveis.
+
+Mantenha o visual do Kanban limpo e fácil de ler. Utilize uma hierarquia visual que destaque o título e permita localizar rapidamente o cliente.
+
+### 12.3. Editar e preservar os dados do cliente
+
+Permita editar o nome e o e-mail do cliente quando houver necessidade de corrigir informações.
+
+As alterações deverão ser salvas no banco de dados e continuar disponíveis após atualizar a página ou reabrir o bug.
+
+Bugs existentes não deverão perder seus dados durante a implementação. Caso não tenham informações de cliente cadastradas, os novos campos deverão aparecer vazios, sem inventar dados.
+
+Se já existir um cadastro de clientes no projeto, analise a possibilidade de integrá-lo ao Kanban para facilitar a seleção e evitar duplicidades. Não crie uma segunda base de clientes desnecessariamente. Se não existir esse cadastro, permita informar os dados diretamente no bug.
+
+### 12.4. Pesquisa e filtros no Kanban
+
+Se a arquitetura atual permitir, adicione filtros ou pesquisa por:
+
+- Nome do cliente.
+- E-mail do cliente.
+- Título do bug.
+- Módulo.
+- Status.
+- Responsável.
+
+Os filtros deverão funcionar junto aos recursos já existentes no Kanban, sem prejudicar a movimentação dos cartões entre colunas.
+
+A inclusão dos campos não deverá alterar o funcionamento dos módulos, status, responsáveis, prioridades ou demais dados existentes.
+
+### 12.5. Privacidade e permissões
+
+Os dados de contato deverão ser visíveis somente aos integrantes autorizados a consultar o bug.
+
+Valide no backend as permissões para consultar e editar os registros. Não permita que um usuário altere dados de bugs aos quais não tenha acesso.
+
+Não utilize o e-mail do cliente como credencial de acesso ao sistema. Ele deverá ser tratado exclusivamente como informação de contato vinculada ao registro do bug.
+
+## 13. Preservação e aplicação das permissões
+
+Todas as melhorias deverão respeitar os níveis de acesso existentes.
+
+- Somente usuários autorizados poderão criar, editar ou arquivar módulos e artigos.
+- Os integrantes do suporte deverão consultar artigos e utilizar o chat conforme suas permissões.
+- Cada usuário poderá editar apenas o próprio perfil pessoal.
+- O gerenciamento administrativo de contas continuará restrito aos usuários autorizados.
+- O administrador deverá ter acesso às funcionalidades administrativas de usuários previstas neste prompt.
+- Usuários comuns não poderão gerenciar contas alheias ou alterar as próprias permissões.
+- O acesso aos bugs, aos dados dos clientes e aos anexos deverá respeitar as regras de autorização.
+- As menções individuais deverão respeitar as permissões de acesso às conversas.
+- A menção `@todos` deverá considerar somente colaboradores ativos e autorizados no chat ou canal correspondente.
+- Nenhuma alteração poderá conceder permissões indevidas ou remover acessos válidos.
+
+A autorização deverá ser verificada no backend em todas as operações de leitura e escrita. Ocultar botões na interface não será considerado uma proteção suficiente.
+
+Todas as informações deverão vir do banco de dados real e permanecer disponíveis após logout, novo login ou acesso por outro dispositivo autorizado.
+
+## 14. Testes obrigatórios
+
+Não considere a implementação concluída sem testar os principais cenários.
+
+### 14.1. Login e sessão
+
+1. Entrar com uma conta válida.
+2. Confirmar que não existe alternância direta entre usuários.
+3. Encerrar a sessão pelo botão “Sair”.
+4. Confirmar que os campos de login aparecem vazios.
+5. Confirmar que a aplicação não preenche e-mail ou senha automaticamente.
+6. Tentar acessar páginas internas depois do logout.
+7. Utilizar o botão de voltar do navegador após sair.
+8. Confirmar que o gerenciamento administrativo continua funcionando.
+9. Confirmar que dados permanentes não são apagados no logout.
+
+### 14.2. Perfil e gerenciamento de usuários
+
+1. Abrir o menu de perfil.
+2. Adicionar uma foto diretamente do computador.
+3. Visualizar, salvar e remover a foto.
+4. Atualizar a página e confirmar que a foto permanece.
+5. Alterar o nome de exibição e verificar as áreas relacionadas.
+6. Testar a alteração do e-mail, caso permitida.
+7. Tentar editar o perfil de outro usuário por meio de uma requisição ou alteração de identificador.
+8. Confirmar que a tentativa de editar o perfil alheio é bloqueada.
+9. Confirmar que o usuário não consegue alterar as próprias permissões administrativas.
+10. Entrar com uma conta de administrador e visualizar a lista de usuários.
+11. Testar a criação e edição de usuários, conforme as permissões disponíveis.
+12. Testar o bloqueio e desbloqueio de uma conta, se suportados.
+13. Testar o fluxo seguro de redefinição de senha.
+14. Confirmar que usuários comuns não acessam as ações administrativas.
+15. Testar a exclusão de uma conta em ambiente seguro, verificando a preservação dos dados relacionados.
+
+### 14.3. Tema claro e escuro
+
+1. Alternar do tema claro para o escuro.
+2. Alternar do tema escuro para o claro.
+3. Navegar por todas as áreas principais e verificar a consistência visual.
+4. Conferir formulários, tabelas, menus, modais, notificações e anexos.
+5. Atualizar a página e confirmar que o tema escolhido permanece.
+6. Sair e entrar novamente e confirmar que a preferência é preservada.
+7. Acessar com outro usuário e confirmar que a preferência individual é respeitada.
+8. Verificar contraste, legibilidade e estados de foco nos dois temas.
+
+### 14.4. Módulos e Base de Conhecimento
+
+1. Criar um novo módulo pelo menu “Módulos”.
+2. Confirmar que ele aparece automaticamente no seletor de módulos dos artigos.
+3. Confirmar que aparece tanto na criação quanto na edição de artigos.
+4. Criar e salvar um artigo associado ao módulo.
+5. Reabrir o artigo e confirmar que o módulo correto permanece selecionado.
+6. Pesquisar por título, palavra-chave e termo presente no conteúdo.
+7. Pesquisar por parte de uma expressão e verificar as correspondências relevantes.
+8. Testar a pesquisa com diferenças de maiúsculas, minúsculas e acentuação.
+9. Combinar pesquisa e filtro de módulo.
+10. Confirmar que a visualização rápida apresenta as informações essenciais.
+11. Confirmar que o artigo completo continua acessível.
+12. Editar as palavras-chave e verificar a atualização dos resultados.
+13. Editar o módulo e verificar as áreas relacionadas.
+14. Confirmar que os bugs continuam funcionando no Kanban.
+15. Confirmar que os detalhes secundários podem ser expandidos e recolhidos.
+16. Confirmar que nenhum artigo ou relacionamento foi perdido.
+17. Testar o tratamento de módulos arquivados ou excluídos.
+18. Verificar se o seletor está consultando os dados reais, sem listas estáticas.
+19. Confirmar que a pesquisa e os filtros são preservados ao abrir um artigo e retornar à listagem.
+
+### 14.5. Anexos
+
+1. Selecionar uma imagem e um documento.
+2. Anexar vários arquivos na mesma operação.
+3. Arrastar e soltar arquivos.
+4. Copiar uma imagem e colar com Ctrl+V.
+5. Visualizar e remover anexos antes do envio.
+6. Salvar um artigo e confirmar que os anexos continuam disponíveis.
+7. Atualizar a página do chat e verificar a persistência.
+8. Baixar documentos recebidos.
+9. Confirmar que usuários sem permissão não acessam arquivos privados.
+10. Testar arquivos acima do limite e formatos não permitidos.
+11. Confirmar que falhas de upload não geram registros incompletos.
+12. Confirmar que arquivos utilizados por outros registros não são excluídos indevidamente.
+
+### 14.6. Chat, menções individuais e @todos
+
+1. Enviar uma mensagem de texto pelo chat.
+2. Enviar uma mensagem com imagem.
+3. Enviar uma mensagem com documento.
+4. Enviar uma mensagem com vários anexos.
+5. Confirmar que as menções individuais existentes continuam funcionando.
+6. Digitar `@` no chat e confirmar que a opção `@todos` aparece.
+7. Selecionar `@todos` e enviar uma mensagem.
+8. Confirmar que todos os colaboradores ativos e autorizados recebem a notificação.
+9. Confirmar que usuários bloqueados, inativos ou sem acesso à conversa não recebem notificações.
+10. Confirmar que o autor não recebe uma notificação para si mesmo, conforme a regra definida.
+11. Confirmar que a mensagem aparece na área “Menções” dos destinatários.
+12. Confirmar que a notificação direciona para a mensagem original.
+13. Testar uma mensagem com `@todos` e anexos.
+14. Testar uma mensagem contendo `@todos` e uma menção individual, garantindo que não existam notificações duplicadas.
+15. Confirmar que as notificações continuam disponíveis após atualizar a página.
+16. Confirmar que a menção de todos respeita as permissões de cada chat ou canal.
+17. Confirmar que o sistema não permite mencionar usuários que não possuem acesso à conversa.
+18. Confirmar que as notificações são persistidas no banco de dados.
+
+### 14.7. Kanban e dados do cliente
+
+1. Criar um bug preenchendo o nome e o e-mail do cliente.
+2. Salvar e reabrir o bug.
+3. Confirmar que os dados continuam disponíveis.
+4. Verificar o nome do cliente no cartão do Kanban.
+5. Confirmar que o e-mail aparece nos detalhes do bug.
+6. Editar os dados do cliente e salvar as alterações.
+7. Atualizar a página e verificar a persistência.
+8. Testar a validação de um e-mail inválido.
+9. Confirmar que bugs antigos continuam funcionando sem perda de dados.
+10. Testar os filtros por cliente e e-mail, caso implementados.
+11. Confirmar que a movimentação dos cartões entre colunas continua funcionando.
+12. Verificar que usuários sem permissão não conseguem consultar ou editar dados protegidos.
+
+## 15. Orientações finais de implementação
+
+Antes de modificar o código, analise a arquitetura atual, os componentes, a autenticação, as tabelas, os relacionamentos, as permissões e o armazenamento.
+
+Identifique as causas dos problemas antes de implementar as soluções.
+
+Não recrie o projeto do zero sem necessidade. Reaproveite a infraestrutura existente quando for adequada e faça as alterações de forma integrada.
+
+Não utilize dados fictícios como se fossem registros reais. Não remova usuários, artigos, módulos, bugs, mensagens, perfis, preferências ou anexos existentes.
+
+Todas as funcionalidades deverão ser persistentes, validadas no backend e compatíveis com a estrutura atual.
+
+Se forem necessárias alterações no banco de dados:
+
+- Crie migrações seguras e versionadas.
+- Preserve os registros existentes.
+- Não sobrescreva dados reais com valores de demonstração.
+- Evite criar tabelas duplicadas quando já existir uma estrutura adequada.
+- Garanta a integridade dos relacionamentos.
+- Considere compatibilidade com as funcionalidades existentes e um procedimento de recuperação em caso de falha.
+
+Implemente as alterações de forma incremental, verificando se cada parte funciona antes de avançar para a próxima.
+
+Não considere uma funcionalidade concluída apenas porque o botão ou a tela foi criado. Verifique a integração com o banco de dados, a persistência, o backend e as permissões.
+
+Ao finalizar, apresente um resumo das alterações realizadas, dos testes executados, dos problemas encontrados e corrigidos e de eventuais configurações adicionais necessárias.
+
+Informe claramente qualquer requisito que não tenha sido concluído. Não afirme que testes foram aprovados se eles não tiverem sido executados.
+
+## 16. Resultado final esperado
+
+Quero um sistema de suporte moderno, organizado, seguro e fácil de utilizar, com:
+
+- Login individual e encerramento seguro das sessões.
+- Tela de login sem credenciais preenchidas pela aplicação.
+- Perfil individual com foto e edição das próprias informações.
+- Controle para impedir que usuários editem o perfil pessoal de outras pessoas.
+- Gerenciamento administrativo de usuários, dentro das permissões autorizadas.
+- Visualização dos dados dos usuários pelo administrador, sem exposição de credenciais sensíveis.
+- Criação, edição, bloqueio, desbloqueio, redefinição de senha e exclusão de contas conforme as permissões administrativas.
+- Tema claro e tema escuro, com preferência salva por usuário.
+- Aparência consistente em todas as áreas do sistema.
+- Base de Conhecimento limpa, organizada e otimizada para a rotina real do suporte.
+- Pesquisa destacada por palavras-chave, títulos, descrições, conteúdo e módulos.
+- Resultados relevantes mesmo quando o atendente não conhece o título exato do artigo.
+- Visualização rápida de problemas, causas conhecidas, soluções e caminhos nos menus.
+- Artigos organizados para facilitar a consulta durante o atendimento.
+- Cadastro centralizado de módulos integrado aos artigos e ao Kanban.
+- Correção definitiva do problema em que os módulos cadastrados não aparecem no seletor de artigos.
+- Filtros por módulo combinados com a pesquisa.
+- Cadastro e edição persistentes de palavras-chave.
+- Upload de imagens e documentos diretamente nos artigos.
+- Colagem de imagens com Ctrl+V.
+- Envio de arquivos e imagens no chat interno.
+- Anexos persistentes e protegidos.
+- Menções individuais funcionando corretamente.
+- Opção `@todos` para mencionar todos os colaboradores ativos e autorizados de uma só vez.
+- Notificações individuais e persistentes para os colaboradores mencionados.
+- Integração de `@todos` com a área “Menções” e com as notificações existentes.
+- Prevenção de notificações duplicadas.
+- Respeito às permissões de cada chat ou canal.
+- Kanban com nome e e-mail do cliente associado a cada bug.
+- Possibilidade de editar e consultar os dados do cliente nos detalhes do bug.
+- Pesquisa por cliente e e-mail no Kanban, quando compatível com a estrutura existente.
+- Separação clara entre os dados do cliente e os dados do colaborador responsável pelo bug.
+- Preservação dos dados, das permissões e das funcionalidades atuais.
+- Proteção de dados pessoais, arquivos privados e operações administrativas.
+- Testes reais de integração, persistência, autenticação e autorização.
+
+Todas essas funcionalidades deverão trabalhar em conjunto e utilizar dados reais e persistentes. Não considere a implementação concluída se os recursos existirem apenas visualmente ou não funcionarem corretamente com o banco de dados e as permissões.

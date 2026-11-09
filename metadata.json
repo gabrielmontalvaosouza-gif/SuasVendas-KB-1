@@ -1,0 +1,6 @@
+{
+  "name": "SuasVendas KB — Base de Conhecimento Interna",
+  "description": "Base de Conhecimento Interna do SuasVendas com busca em tempo real (Command Palette), taxonomia espelhada da central de ajuda, motor de sincronização JSON e suporte técnico acelerado.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

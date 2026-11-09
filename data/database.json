@@ -1,0 +1,1476 @@
+{
+  "users": [
+    {
+      "id": "usr-admin-1",
+      "name": "Carlos Oliveira",
+      "email": "carlos.admin@suasvendas.com",
+      "role": "ADMIN",
+      "avatar_url": "",
+      "is_blocked": false,
+      "permissions": {
+        "can_manage_modules": true,
+        "can_manage_columns": true,
+        "can_manage_users": true,
+        "can_assign_lead": true,
+        "can_edit_due_date": true,
+        "can_change_priority": true,
+        "can_resolve_bug": true,
+        "can_close_bug": true,
+        "can_delete_bug": true,
+        "can_add_comment": true
+      },
+      "created_at": "2026-01-10T08:00:00Z",
+      "password_salt": "09d0f8c270022dfb8660aa95213d69ef",
+      "password_hash": "2e7e04f8a26f6bc7ea8cbf5fd4f44bc72280f92f33ca44051b65824fd5c7c3d81f8a4f62ddc5ef96351f58335c3db2c2d14424615648b8882d1a5cf71c19d60b",
+      "last_login_at": "2026-10-27T12:22:06.403Z"
+    },
+    {
+      "id": "usr-sup-2",
+      "name": "Mariana Souza",
+      "email": "mariana.supervisor@suasvendas.com",
+      "role": "SUPERVISOR",
+      "avatar_url": "",
+      "is_blocked": false,
+      "permissions": {
+        "can_manage_modules": false,
+        "can_manage_columns": true,
+        "can_manage_users": false,
+        "can_assign_lead": true,
+        "can_edit_due_date": true,
+        "can_change_priority": true,
+        "can_resolve_bug": true,
+        "can_close_bug": true,
+        "can_delete_bug": false,
+        "can_add_comment": true
+      },
+      "created_at": "2026-01-15T09:30:00Z",
+      "password_salt": "caaeb4c45d5034156f7c4703ae3a4869",
+      "password_hash": "c3ea2aa9c65a83417cb9ac866f9cc8cc32c21eee1bde5d5ae472a7bb542f28a9c85efa94d4de7989343aa2d27c77cd709915761c31489f45847e209dd09eedcb"
+    },
+    {
+      "id": "usr-sup-3",
+      "name": "Lucas Ferreira",
+      "email": "lucas.suporte@suasvendas.com",
+      "role": "SUPPORT",
+      "avatar_url": "",
+      "is_blocked": false,
+      "permissions": {
+        "can_manage_modules": false,
+        "can_manage_columns": false,
+        "can_manage_users": false,
+        "can_assign_lead": false,
+        "can_edit_due_date": false,
+        "can_change_priority": false,
+        "can_resolve_bug": false,
+        "can_close_bug": true,
+        "can_delete_bug": false,
+        "can_add_comment": true
+      },
+      "created_at": "2026-02-01T10:00:00Z",
+      "password_salt": "5bb26e36dca98b94c97aba4edb4e24ce",
+      "password_hash": "51045f991ef506c32a0fca9727ca25c9e5c293a26ac8087ffd1404e5fc10b957e7600843854e5dce24e8d8836cc9459b020c21f8b2f49c16564f545cf24d8a9d"
+    },
+    {
+      "id": "usr-dev-4",
+      "name": "Bruno Alcantara",
+      "email": "bruno.dev@suasvendas.com",
+      "role": "TECH",
+      "avatar_url": "",
+      "is_blocked": false,
+      "permissions": {
+        "can_manage_modules": false,
+        "can_manage_columns": false,
+        "can_manage_users": false,
+        "can_assign_lead": false,
+        "can_edit_due_date": false,
+        "can_change_priority": false,
+        "can_resolve_bug": true,
+        "can_close_bug": false,
+        "can_delete_bug": false,
+        "can_add_comment": true
+      },
+      "created_at": "2026-02-10T11:00:00Z",
+      "password_salt": "4395ec8d80badd0bbb192fe9f6dad2cb",
+      "password_hash": "f80f47b3e1a8ceaf51682fd11a0fafb1e14337c435eb218f46124b742c33c0332ae3156073b137e76ca5d864b626cf81f5814894ddb47ed4462ab876b50fac37"
+    },
+    {
+      "id": "usr-dev-5",
+      "name": "Aline Castro",
+      "email": "aline.dev@suasvendas.com",
+      "role": "TECH",
+      "avatar_url": "",
+      "is_blocked": false,
+      "permissions": {
+        "can_manage_modules": false,
+        "can_manage_columns": false,
+        "can_manage_users": false,
+        "can_assign_lead": false,
+        "can_edit_due_date": false,
+        "can_change_priority": false,
+        "can_resolve_bug": true,
+        "can_close_bug": false,
+        "can_delete_bug": false,
+        "can_add_comment": true
+      },
+      "created_at": "2026-02-20T14:00:00Z",
+      "password_salt": "42a51120a89380d7cf4e998b8d0a0101",
+      "password_hash": "127c627b9d3949e0cdf2b72f1369a9cadf64d8fee002b2a41e52f2b2c6e4f6681ca7646538998cf1bd8452e45f464c740b4acac7136d2a8ae83d5eab696c5591"
+    },
+    {
+      "id": "usr-admin-primary",
+      "name": "Manoel Vilela (Admin)",
+      "email": "manoelvilelaneto@gmail.com",
+      "role": "ADMIN",
+      "avatar_url": "",
+      "is_blocked": false,
+      "password_salt": "e52009f0652bdbbb865c76a5e47ae975",
+      "password_hash": "aef324b38fc89882d9e39e47a5ff47285a7aa5ec1a30f314efc50f2acbeca10c8293f42aa318063987e1af54fc385863925724b7addf1d26b8866f94c91fd80d",
+      "permissions": {
+        "can_manage_modules": true,
+        "can_manage_columns": true,
+        "can_manage_users": true,
+        "can_assign_lead": true,
+        "can_edit_due_date": true,
+        "can_change_priority": true,
+        "can_resolve_bug": true,
+        "can_close_bug": true,
+        "can_delete_bug": true,
+        "can_add_comment": true
+      },
+      "created_at": "2026-10-26T17:03:50.267Z",
+      "last_login_at": "2026-10-27T12:17:30.382Z"
+    }
+  ],
+  "modules": [
+    {
+      "id": "mod-1",
+      "slug": "faturamento-nfe",
+      "name": "Faturamento e NF-e",
+      "description": "Emissão fiscal, contingência SEFAZ, DANFE e regras tributárias de ICMS-ST.",
+      "color": "#2563EB",
+      "icon": "Receipt",
+      "order_index": 0,
+      "is_archived": false,
+      "created_at": "2026-01-01T00:00:00Z",
+      "updated_at": "2026-01-01T00:00:00Z"
+    },
+    {
+      "id": "mod-2",
+      "slug": "pedidos-orcamentos",
+      "name": "Pedidos e Orçamentos",
+      "description": "Criação de pedidos, tabelas de preços, regras de desconto e aprovação comercial.",
+      "color": "#10B981",
+      "icon": "ShoppingCart",
+      "order_index": 1,
+      "is_archived": false,
+      "created_at": "2026-01-01T00:00:00Z",
+      "updated_at": "2026-01-01T00:00:00Z"
+    },
+    {
+      "id": "mod-3",
+      "slug": "integracoes-erp",
+      "name": "Integrações ERP & API",
+      "description": "Conectores Bling, Tiny, Omie, Totvs Protheus, Webhooks e endpoints REST.",
+      "color": "#8B5CF6",
+      "icon": "RefreshCw",
+      "order_index": 2,
+      "is_archived": false,
+      "created_at": "2026-01-01T00:00:00Z",
+      "updated_at": "2026-01-01T00:00:00Z"
+    },
+    {
+      "id": "mod-4",
+      "slug": "catalogo-b2b",
+      "name": "Catálogo & Portal B2B",
+      "description": "Vitrine digital para representantes e compras diretas de clientes lojistas.",
+      "color": "#F59E0B",
+      "icon": "Store",
+      "order_index": 3,
+      "is_archived": false,
+      "created_at": "2026-01-01T00:00:00Z",
+      "updated_at": "2026-01-01T00:00:00Z"
+    },
+    {
+      "id": "mod-5",
+      "slug": "app-mobile",
+      "name": "App Mobile Força de Vendas",
+      "description": "Aplicativo Android e iOS para operação de vendas e pedidos offline.",
+      "color": "#EC4899",
+      "icon": "Smartphone",
+      "order_index": 4,
+      "is_archived": false,
+      "created_at": "2026-01-01T00:00:00Z",
+      "updated_at": "2026-01-01T00:00:00Z"
+    },
+    {
+      "id": "mod-6",
+      "slug": "financeiro-cobranca",
+      "name": "Financeiro & Cobrança",
+      "description": "Contas a receber, geração de boletos, PIX dinâmico e conciliação bancária.",
+      "color": "#06B6D4",
+      "icon": "Banknote",
+      "order_index": 5,
+      "is_archived": false,
+      "created_at": "2026-01-01T00:00:00Z",
+      "updated_at": "2026-01-01T00:00:00Z"
+    }
+  ],
+  "columns": [
+    {
+      "id": "col-analise",
+      "name": "Em análise",
+      "color": "#3B82F6",
+      "order_index": 1,
+      "is_system": true
+    },
+    {
+      "id": "col-identificado",
+      "name": "Bug identificado",
+      "color": "#F59E0B",
+      "order_index": 2,
+      "is_system": true
+    },
+    {
+      "id": "col-aguardando",
+      "name": "Aguardando desenvolvimento",
+      "color": "#EC4899",
+      "order_index": 3,
+      "is_system": true
+    },
+    {
+      "id": "col-desenvolvimento",
+      "name": "Em desenvolvimento",
+      "color": "#8B5CF6",
+      "order_index": 4,
+      "is_system": true
+    },
+    {
+      "id": "col-testes",
+      "name": "Em testes",
+      "color": "#06B6D4",
+      "order_index": 5,
+      "is_system": true
+    },
+    {
+      "id": "col-resolvido",
+      "name": "Resolvido",
+      "color": "#10B981",
+      "order_index": 6,
+      "is_system": true,
+      "is_resolved_stage": true
+    },
+    {
+      "id": "col-encerrado",
+      "name": "Encerrado",
+      "color": "#059669",
+      "order_index": 7,
+      "is_system": true,
+      "is_closed_stage": true
+    },
+    {
+      "id": "col-1793034255694",
+      "name": "Novo bug",
+      "color": "#64748B",
+      "order_index": 0,
+      "is_resolved_stage": false,
+      "is_closed_stage": false,
+      "is_archived": false
+    }
+  ],
+  "bugs": [
+    {
+      "id": "bug-1793101582719",
+      "code": "SV-1049",
+      "title": "Falha ao sincronizar pedido de vendas com o Bling",
+      "description": "Cliente relatou que o pedido 48920 gerou timeout na SEFAZ.",
+      "module_id": "mod-1",
+      "module_name": "Faturamento e NF-e",
+      "column_id": "col-analise",
+      "priority": "HIGH",
+      "reporter_id": "usr-admin-1",
+      "reporter_name": "Carlos Oliveira",
+      "customer_name": "Distribuidora Alvorada Ltda",
+      "customer_email": "fiscal@alvorada.com.br",
+      "assignee_id": null,
+      "assignee_name": null,
+      "supervisor_id": null,
+      "supervisor_name": null,
+      "estimated_due_date": null,
+      "effective_resolution_date": null,
+      "solution_applied": null,
+      "technical_notes": null,
+      "attachments": [],
+      "comments": [],
+      "history": [
+        {
+          "id": "h-1793101582719",
+          "bug_id": "bug-1793101582719",
+          "user_id": "usr-admin-1",
+          "user_name": "Carlos Oliveira",
+          "user_role": "SUPPORT",
+          "field_changed": "status",
+          "old_value": "Nenhum",
+          "new_value": "Novo bug",
+          "description": "Bug registrado no módulo Faturamento e NF-e.",
+          "created_at": "2026-10-27T11:46:22.719Z"
+        }
+      ],
+      "created_at": "2026-10-27T11:46:22.719Z",
+      "updated_at": "2026-10-27T11:46:22.719Z",
+      "is_reopened": false
+    },
+    {
+      "id": "bug-1793101487186",
+      "code": "SV-1048",
+      "title": "Falha ao sincronizar pedido de vendas com o Bling",
+      "description": "Cliente relatou que o pedido 48920 gerou timeout na SEFAZ.",
+      "module_id": "mod-1",
+      "module_name": "Faturamento e NF-e",
+      "column_id": "col-analise",
+      "priority": "HIGH",
+      "reporter_id": "usr-admin-1",
+      "reporter_name": "Carlos Oliveira",
+      "customer_name": "Distribuidora Alvorada Ltda",
+      "customer_email": "fiscal@alvorada.com.br",
+      "assignee_id": null,
+      "assignee_name": null,
+      "supervisor_id": null,
+      "supervisor_name": null,
+      "estimated_due_date": null,
+      "effective_resolution_date": null,
+      "solution_applied": null,
+      "technical_notes": null,
+      "attachments": [],
+      "comments": [],
+      "history": [
+        {
+          "id": "h-1793101487186",
+          "bug_id": "bug-1793101487186",
+          "user_id": "usr-admin-1",
+          "user_name": "Carlos Oliveira",
+          "user_role": "SUPPORT",
+          "field_changed": "status",
+          "old_value": "Nenhum",
+          "new_value": "Novo bug",
+          "description": "Bug registrado no módulo Faturamento e NF-e.",
+          "created_at": "2026-10-27T11:44:47.186Z"
+        }
+      ],
+      "created_at": "2026-10-27T11:44:47.186Z",
+      "updated_at": "2026-10-27T11:44:47.186Z",
+      "is_reopened": false
+    },
+    {
+      "id": "bug-1793101354284",
+      "code": "SV-1047",
+      "title": "Falha ao sincronizar pedido de vendas com o Bling",
+      "description": "Cliente relatou que o pedido 48920 gerou timeout na SEFAZ.",
+      "module_id": "mod-1",
+      "module_name": "Faturamento e NF-e",
+      "column_id": "col-analise",
+      "priority": "HIGH",
+      "reporter_id": "usr-admin-1",
+      "reporter_name": "Carlos Oliveira",
+      "assignee_id": null,
+      "assignee_name": null,
+      "supervisor_id": null,
+      "supervisor_name": null,
+      "estimated_due_date": null,
+      "effective_resolution_date": null,
+      "solution_applied": null,
+      "technical_notes": null,
+      "attachments": [],
+      "comments": [],
+      "history": [
+        {
+          "id": "h-1793101354284",
+          "bug_id": "bug-1793101354284",
+          "user_id": "usr-admin-1",
+          "user_name": "Carlos Oliveira",
+          "user_role": "SUPPORT",
+          "field_changed": "status",
+          "old_value": "Nenhum",
+          "new_value": "Novo bug",
+          "description": "Bug registrado no módulo Faturamento e NF-e.",
+          "created_at": "2026-10-27T11:42:34.284Z"
+        }
+      ],
+      "created_at": "2026-10-27T11:42:34.284Z",
+      "updated_at": "2026-10-27T11:42:34.284Z",
+      "is_reopened": false
+    },
+    {
+      "id": "bug-1041",
+      "code": "SV-1041",
+      "title": "Rejeição 215 SEFAZ ao emitir nota fiscal com caractere \"&\" no complemento",
+      "description": "Ao faturar pedidos onde o endereço possui caracteres especiais como \"&\" ou quebras de linha no complemento, o retorno da SEFAZ falha no Schema XML com código 215 impedindo a emissão da NF-e.",
+      "module_id": "mod-1",
+      "module_name": "Faturamento e NF-e",
+      "column_id": "col-desenvolvimento",
+      "priority": "CRITICAL",
+      "reporter_id": "usr-sup-3",
+      "reporter_name": "Lucas Ferreira",
+      "assignee_id": "usr-dev-4",
+      "assignee_name": "Bruno Alcantara",
+      "supervisor_id": "usr-sup-2",
+      "supervisor_name": "Mariana Souza",
+      "estimated_due_date": "2026-10-29T15:53:16.511Z",
+      "effective_resolution_date": null,
+      "solution_applied": null,
+      "technical_notes": "Sanitizar inputs no gateway fiscal antes de montar o payload XML da NF-e v4.00.",
+      "attachments": [
+        {
+          "id": "att-1",
+          "name": "print_rejeicao_215.png",
+          "file_type": "image/png",
+          "size_bytes": 320000,
+          "url": "https://images.unsplash.com/photo-1555066931-4365d14bab8c?w=600",
+          "uploaded_by": "Lucas Ferreira",
+          "uploaded_at": "2026-10-19T15:53:16.511Z"
+        }
+      ],
+      "comments": [
+        {
+          "id": "comm-1",
+          "bug_id": "bug-1041",
+          "user_id": "usr-sup-2",
+          "user_name": "Mariana Souza",
+          "user_role": "SUPERVISOR",
+          "content": "Prioridade definida como Crítica pois paralisa o faturamento dos lojistas.",
+          "created_at": "2026-10-19T15:53:16.511Z"
+        },
+        {
+          "id": "comm-2",
+          "bug_id": "bug-1041",
+          "user_id": "usr-dev-4",
+          "user_name": "Bruno Alcantara",
+          "user_role": "TECH",
+          "content": "Branch `fix/sefaz-xml-sanitization` aberta. Escrevendo testes unitários.",
+          "created_at": "2026-10-25T15:53:16.511Z"
+        }
+      ],
+      "history": [
+        {
+          "id": "h-1",
+          "bug_id": "bug-1041",
+          "user_id": "usr-sup-3",
+          "user_name": "Lucas Ferreira",
+          "user_role": "SUPPORT",
+          "field_changed": "status",
+          "old_value": "Nenhum",
+          "new_value": "Novo bug",
+          "description": "Bug registrado pelo suporte.",
+          "created_at": "2026-10-19T15:53:16.511Z"
+        },
+        {
+          "id": "h-2",
+          "bug_id": "bug-1041",
+          "user_id": "usr-sup-2",
+          "user_name": "Mariana Souza",
+          "user_role": "SUPERVISOR",
+          "field_changed": "assignee_id",
+          "old_value": "Não atribuído",
+          "new_value": "Bruno Alcantara",
+          "description": "Supervisor atribuiu responsável e prazo.",
+          "created_at": "2026-10-19T15:53:16.511Z"
+        },
+        {
+          "id": "h-3",
+          "bug_id": "bug-1041",
+          "user_id": "usr-dev-4",
+          "user_name": "Bruno Alcantara",
+          "user_role": "TECH",
+          "field_changed": "status",
+          "old_value": "Aguardando desenvolvimento",
+          "new_value": "Em desenvolvimento",
+          "description": "Desenvolvedor iniciou a implementação da correção.",
+          "created_at": "2026-10-25T15:53:16.511Z"
+        }
+      ],
+      "created_at": "2026-10-19T15:53:16.511Z",
+      "updated_at": "2026-10-25T15:53:16.511Z",
+      "is_reopened": false
+    },
+    {
+      "id": "bug-1042",
+      "code": "SV-1042",
+      "title": "Divergência de Saldo de Estoque após sincronização com Bling ERP",
+      "description": "Vendas físicas realizadas diretamente no PDV do ERP não são refletidas no SuasVendas. O webhook de estoque apresenta atraso de processamento quando o depósito possui mais de 10.000 itens.",
+      "module_id": "mod-3",
+      "module_name": "Integrações ERP & API",
+      "column_id": "col-testes",
+      "priority": "HIGH",
+      "reporter_id": "usr-sup-3",
+      "reporter_name": "Lucas Ferreira",
+      "assignee_id": "usr-dev-4",
+      "assignee_name": "Bruno Alcantara",
+      "supervisor_id": "usr-sup-2",
+      "supervisor_name": "Mariana Souza",
+      "estimated_due_date": "2026-10-25T15:53:16.511Z",
+      "effective_resolution_date": null,
+      "solution_applied": null,
+      "technical_notes": "Otimizada a query de lote e criado worker assíncrono Redis para a fila de webhooks.",
+      "attachments": [],
+      "comments": [
+        {
+          "id": "comm-3",
+          "bug_id": "bug-1042",
+          "user_id": "usr-dev-4",
+          "user_name": "Bruno Alcantara",
+          "user_role": "TECH",
+          "content": "Correção implantada no ambiente de homologação. Em fase de testes de carga.",
+          "created_at": "2026-10-25T15:53:16.511Z"
+        }
+      ],
+      "history": [
+        {
+          "id": "h-4",
+          "bug_id": "bug-1042",
+          "user_id": "usr-sup-3",
+          "user_name": "Lucas Ferreira",
+          "user_role": "SUPPORT",
+          "field_changed": "status",
+          "old_value": "Nenhum",
+          "new_value": "Novo bug",
+          "description": "Abertura do chamado pelo suporte.",
+          "created_at": "2026-10-19T15:53:16.511Z"
+        },
+        {
+          "id": "h-5",
+          "bug_id": "bug-1042",
+          "user_id": "usr-dev-4",
+          "user_name": "Bruno Alcantara",
+          "user_role": "TECH",
+          "field_changed": "status",
+          "old_value": "Em desenvolvimento",
+          "new_value": "Em testes",
+          "description": "Movido para testes de homologação.",
+          "created_at": "2026-10-25T15:53:16.511Z"
+        }
+      ],
+      "created_at": "2026-10-19T15:53:16.511Z",
+      "updated_at": "2026-10-25T15:53:16.511Z",
+      "is_reopened": false
+    },
+    {
+      "id": "bug-1043",
+      "code": "SV-1043",
+      "title": "Erro HTTP 401 Unauthorized ao consultar endpoint /api/v2/orders no Portal B2B",
+      "description": "Clientes corporativos com chaves geradas há mais de 90 dias recebiam 401 Unauthorized mesmo com o header Bearer preenchido.",
+      "module_id": "mod-4",
+      "module_name": "Catálogo & Portal B2B",
+      "column_id": "col-resolvido",
+      "priority": "MEDIUM",
+      "reporter_id": "usr-sup-3",
+      "reporter_name": "Lucas Ferreira",
+      "assignee_id": "usr-dev-5",
+      "assignee_name": "Aline Castro",
+      "supervisor_id": "usr-sup-2",
+      "supervisor_name": "Mariana Souza",
+      "estimated_due_date": "2026-10-25T15:53:16.511Z",
+      "effective_resolution_date": "2026-10-26T15:53:16.511Z",
+      "solution_applied": "Corrigido bug na rotação automática de tokens JWT que invalidava o tenant_id do payload. Realizado deploy em produção v2.8.4.",
+      "technical_notes": "Atualizado middleware de autenticação no gateway para permitir refresh token sem revogar sessão ativa.",
+      "attachments": [],
+      "comments": [
+        {
+          "id": "comm-4",
+          "bug_id": "bug-1043",
+          "user_id": "usr-dev-5",
+          "user_name": "Aline Castro",
+          "user_role": "TECH",
+          "content": "Hotfix validado e aprovado. Suporte pode confirmar com o cliente.",
+          "created_at": "2026-10-26T15:53:16.511Z"
+        }
+      ],
+      "history": [
+        {
+          "id": "h-6",
+          "bug_id": "bug-1043",
+          "user_id": "usr-dev-5",
+          "user_name": "Aline Castro",
+          "user_role": "TECH",
+          "field_changed": "status",
+          "old_value": "Em desenvolvimento",
+          "new_value": "Resolvido",
+          "description": "Equipe técnica concluiu e marcou o bug como Resolvido.",
+          "created_at": "2026-10-26T15:53:16.511Z"
+        }
+      ],
+      "created_at": "2026-10-19T15:53:16.511Z",
+      "updated_at": "2026-10-26T15:53:16.511Z",
+      "is_reopened": false
+    },
+    {
+      "id": "bug-1044",
+      "code": "SV-1044",
+      "title": "App Android: Pedidos travados na caixa de saída offline em conexões 4G instáveis",
+      "description": "Representantes de campo relatam que ao alternar entre Wi-Fi e rede móvel 4G, os pedidos digitados continuam em status \"Pendente de Envio\" sem retentar automaticamente.",
+      "module_id": "mod-5",
+      "module_name": "App Mobile Força de Vendas",
+      "column_id": "col-analise",
+      "priority": "HIGH",
+      "reporter_id": "usr-sup-3",
+      "reporter_name": "Lucas Ferreira",
+      "assignee_id": null,
+      "assignee_name": null,
+      "supervisor_id": "usr-sup-2",
+      "supervisor_name": "Mariana Souza",
+      "estimated_due_date": null,
+      "effective_resolution_date": null,
+      "solution_applied": null,
+      "technical_notes": null,
+      "attachments": [],
+      "comments": [],
+      "history": [
+        {
+          "id": "h-1793034252268-fuo",
+          "bug_id": "bug-1044",
+          "user_id": "usr-admin",
+          "user_name": "Administrador (Migração)",
+          "user_role": "ADMIN",
+          "field_changed": "column_id",
+          "old_value": "Novo bug",
+          "new_value": "Em análise",
+          "description": "Coluna \"Novo bug\" excluída. Registro migrado automaticamente para \"Em análise\".",
+          "created_at": "2026-10-26T17:04:12.268Z"
+        },
+        {
+          "id": "h-7",
+          "bug_id": "bug-1044",
+          "user_id": "usr-sup-3",
+          "user_name": "Lucas Ferreira",
+          "user_role": "SUPPORT",
+          "field_changed": "status",
+          "old_value": "Nenhum",
+          "new_value": "Novo bug",
+          "description": "Registrado chamado aberto por múltiplos representantes.",
+          "created_at": "2026-10-26T15:53:16.511Z"
+        }
+      ],
+      "created_at": "2026-10-26T15:53:16.511Z",
+      "updated_at": "2026-10-26T15:53:16.511Z",
+      "is_reopened": false
+    },
+    {
+      "id": "bug-1045",
+      "code": "SV-1045",
+      "title": "Cálculo de alíquota interestadual de ICMS-ST divergente para o estado de MG",
+      "description": "Ao aplicar a fórmula de MVA ajustada para notas interestaduais destinadas a Minas Gerais, o sistema não considerava a redução de base do Convênio ICMS 52/91.",
+      "module_id": "mod-1",
+      "module_name": "Faturamento e NF-e",
+      "column_id": "col-aguardando",
+      "priority": "CRITICAL",
+      "reporter_id": "usr-sup-3",
+      "reporter_name": "Lucas Ferreira",
+      "assignee_id": "usr-dev-4",
+      "assignee_name": "Bruno Alcantara",
+      "supervisor_id": "usr-sup-2",
+      "supervisor_name": "Mariana Souza",
+      "estimated_due_date": "2026-10-27T15:53:16.511Z",
+      "effective_resolution_date": null,
+      "solution_applied": null,
+      "technical_notes": "Atualizar tabela de regras fiscais no motor de tributos.",
+      "attachments": [],
+      "comments": [],
+      "history": [
+        {
+          "id": "h-8",
+          "bug_id": "bug-1045",
+          "user_id": "usr-sup-2",
+          "user_name": "Mariana Souza",
+          "user_role": "SUPERVISOR",
+          "field_changed": "status",
+          "old_value": "Bug identificado",
+          "new_value": "Aguardando desenvolvimento",
+          "description": "Supervisor definiu prioridade Crítica e prazo de 24h.",
+          "created_at": "2026-10-25T15:53:16.511Z"
+        }
+      ],
+      "created_at": "2026-10-25T15:53:16.511Z",
+      "updated_at": "2026-10-25T15:53:16.511Z",
+      "is_reopened": false
+    },
+    {
+      "id": "bug-1046",
+      "code": "SV-1046",
+      "title": "Impressão de DANFE cortando margem superior no formato paisagem",
+      "description": "A geração do documento auxiliar da NF-e cortava a numeração da chave de acesso quando enviado para impressoras laser comuns em modo paisagem.",
+      "module_id": "mod-1",
+      "module_name": "Faturamento e NF-e",
+      "column_id": "col-encerrado",
+      "priority": "LOW",
+      "reporter_id": "usr-sup-3",
+      "reporter_name": "Lucas Ferreira",
+      "assignee_id": "usr-dev-5",
+      "assignee_name": "Aline Castro",
+      "supervisor_id": "usr-sup-2",
+      "supervisor_name": "Mariana Souza",
+      "estimated_due_date": "2026-10-19T15:53:16.511Z",
+      "effective_resolution_date": "2026-10-19T15:53:16.511Z",
+      "solution_applied": "Ajustado o template de impressão HTML/PDF com padding de segurança de 8mm e `@page { margin: 5mm; }`.",
+      "technical_notes": "Validado em navegadores Chrome, Edge e Firefox.",
+      "attachments": [],
+      "comments": [
+        {
+          "id": "comm-5",
+          "bug_id": "bug-1046",
+          "user_id": "usr-sup-3",
+          "user_name": "Lucas Ferreira",
+          "user_role": "SUPPORT",
+          "content": "Confirmado com o suporte e cliente. Tudo funcionando perfeitamente.",
+          "created_at": "2026-10-19T15:53:16.511Z"
+        }
+      ],
+      "history": [
+        {
+          "id": "h-9",
+          "bug_id": "bug-1046",
+          "user_id": "usr-sup-3",
+          "user_name": "Lucas Ferreira",
+          "user_role": "SUPPORT",
+          "field_changed": "status",
+          "old_value": "Resolvido",
+          "new_value": "Encerrado",
+          "description": "Suporte confirmou a resolução e encerrou o chamado.",
+          "created_at": "2026-10-19T15:53:16.511Z"
+        }
+      ],
+      "created_at": "2026-10-19T15:53:16.511Z",
+      "updated_at": "2026-10-19T15:53:16.511Z",
+      "is_reopened": false
+    }
+  ],
+  "notifications": [
+    {
+      "id": "notif-1793101582719",
+      "recipient_user_id": "ALL",
+      "type": "NEW_BUG",
+      "title": "Novo Bug: SV-1049",
+      "message": "Carlos Oliveira registrou \"Falha ao sincronizar pedido de vendas com o Bling\" no módulo Faturamento e NF-e.",
+      "bug_id": "bug-1793101582719",
+      "bug_code": "SV-1049",
+      "is_read": false,
+      "created_at": "2026-10-27T11:46:22.719Z"
+    },
+    {
+      "id": "notif-1793101487186",
+      "recipient_user_id": "ALL",
+      "type": "NEW_BUG",
+      "title": "Novo Bug: SV-1048",
+      "message": "Carlos Oliveira registrou \"Falha ao sincronizar pedido de vendas com o Bling\" no módulo Faturamento e NF-e.",
+      "bug_id": "bug-1793101487186",
+      "bug_code": "SV-1048",
+      "is_read": false,
+      "created_at": "2026-10-27T11:44:47.186Z"
+    },
+    {
+      "id": "notif-1793101354284",
+      "recipient_user_id": "ALL",
+      "type": "NEW_BUG",
+      "title": "Novo Bug: SV-1047",
+      "message": "Carlos Oliveira registrou \"Falha ao sincronizar pedido de vendas com o Bling\" no módulo Faturamento e NF-e.",
+      "bug_id": "bug-1793101354284",
+      "bug_code": "SV-1047",
+      "is_read": false,
+      "created_at": "2026-10-27T11:42:34.284Z"
+    },
+    {
+      "id": "notif-1",
+      "recipient_user_id": "ALL",
+      "type": "OVERDUE",
+      "title": "Bug Atrasado: SV-1042",
+      "message": "O bug \"Divergência de Saldo de Estoque Bling\" ultrapassou o prazo estimado.",
+      "bug_id": "bug-1042",
+      "bug_code": "SV-1042",
+      "is_read": false,
+      "created_at": "2026-10-26T15:53:16.511Z"
+    },
+    {
+      "id": "notif-2",
+      "recipient_user_id": "ALL",
+      "type": "RESOLVED",
+      "title": "Bug Resolvido: SV-1043",
+      "message": "Aline Castro concluiu a correção do bug SV-1043. Pronto para validação do suporte!",
+      "bug_id": "bug-1043",
+      "bug_code": "SV-1043",
+      "is_read": false,
+      "created_at": "2026-10-26T15:53:16.511Z"
+    },
+    {
+      "id": "notif-3",
+      "recipient_user_id": "ALL",
+      "type": "NEW_BUG",
+      "title": "Novo Bug Registrado: SV-1044",
+      "message": "Lucas Ferreira registrou um novo problema no módulo App Mobile.",
+      "bug_id": "bug-1044",
+      "bug_code": "SV-1044",
+      "is_read": true,
+      "created_at": "2026-10-19T15:53:16.511Z"
+    }
+  ],
+  "channels": [
+    {
+      "id": "chan-geral",
+      "name": "Geral & Suporte",
+      "description": "Canal de comunicação rápida de toda a equipe",
+      "order_index": 0
+    },
+    {
+      "id": "chan-bugs",
+      "name": "Bugs & Engenharia",
+      "description": "Discussão técnica sobre chamados e correções",
+      "order_index": 1
+    },
+    {
+      "id": "chan-fiscal",
+      "name": "Faturamento & Fiscal",
+      "description": "Rejeições SEFAZ e regras tributárias",
+      "order_index": 2
+    },
+    {
+      "id": "chan-plantao",
+      "name": "Plantão Técnico",
+      "description": "Plantão de atendimento e alertas de incidentes",
+      "order_index": 3
+    }
+  ],
+  "messages": [
+    {
+      "id": "msg-1793034239466-g8j0",
+      "channel_id": "chan-geral",
+      "sender_id": "usr-sup-2",
+      "sender_name": "Mariana Souza",
+      "sender_role": "SUPERVISOR",
+      "content": "Olá @Manoel Vilela (Admin), pode revisar o bug SV-1042?",
+      "mentions": [
+        "usr-admin-primary"
+      ],
+      "attachments": [],
+      "created_at": "2026-10-26T17:03:59.466Z"
+    },
+    {
+      "id": "msg-1793101582666-04h0",
+      "channel_id": "chan-geral",
+      "sender_id": "usr-admin-1",
+      "sender_name": "Carlos Oliveira",
+      "sender_role": "ADMIN",
+      "content": "Atenção @todos: Reunião geral de alinhamento técnico às 15h.",
+      "mentions": [],
+      "attachments": [],
+      "created_at": "2026-10-27T11:46:22.666Z"
+    },
+    {
+      "id": "msg-1793101641732-aehv",
+      "channel_id": "chan-geral",
+      "sender_id": "usr-admin-1",
+      "sender_name": "Carlos Oliveira",
+      "sender_role": "ADMIN",
+      "content": "Atenção @todos: Comunicado oficial da supervisão para toda a equipe.",
+      "mentions": [
+        "usr-sup-2",
+        "usr-sup-3",
+        "usr-dev-4",
+        "usr-dev-5",
+        "usr-admin-primary"
+      ],
+      "attachments": [],
+      "created_at": "2026-10-27T11:47:21.732Z"
+    }
+  ],
+  "mentions": [
+    {
+      "id": "men-1793101641733-s6ce",
+      "user_id": "usr-admin-primary",
+      "message_id": "msg-1793101641732-aehv",
+      "channel_id": "chan-geral",
+      "channel_name": "Geral & Suporte",
+      "sender_id": "usr-admin-1",
+      "sender_name": "Carlos Oliveira",
+      "sender_role": "ADMIN",
+      "content": "Atenção @todos: Comunicado oficial da supervisão para toda a equipe.",
+      "attachments": [],
+      "is_read": false,
+      "created_at": "2026-10-27T11:47:21.733Z"
+    },
+    {
+      "id": "men-1793101641733-9aml",
+      "user_id": "usr-dev-5",
+      "message_id": "msg-1793101641732-aehv",
+      "channel_id": "chan-geral",
+      "channel_name": "Geral & Suporte",
+      "sender_id": "usr-admin-1",
+      "sender_name": "Carlos Oliveira",
+      "sender_role": "ADMIN",
+      "content": "Atenção @todos: Comunicado oficial da supervisão para toda a equipe.",
+      "attachments": [],
+      "is_read": false,
+      "created_at": "2026-10-27T11:47:21.733Z"
+    },
+    {
+      "id": "men-1793101641733-vd73",
+      "user_id": "usr-dev-4",
+      "message_id": "msg-1793101641732-aehv",
+      "channel_id": "chan-geral",
+      "channel_name": "Geral & Suporte",
+      "sender_id": "usr-admin-1",
+      "sender_name": "Carlos Oliveira",
+      "sender_role": "ADMIN",
+      "content": "Atenção @todos: Comunicado oficial da supervisão para toda a equipe.",
+      "attachments": [],
+      "is_read": false,
+      "created_at": "2026-10-27T11:47:21.733Z"
+    },
+    {
+      "id": "men-1793101641733-zzaz",
+      "user_id": "usr-sup-3",
+      "message_id": "msg-1793101641732-aehv",
+      "channel_id": "chan-geral",
+      "channel_name": "Geral & Suporte",
+      "sender_id": "usr-admin-1",
+      "sender_name": "Carlos Oliveira",
+      "sender_role": "ADMIN",
+      "content": "Atenção @todos: Comunicado oficial da supervisão para toda a equipe.",
+      "attachments": [],
+      "is_read": false,
+      "created_at": "2026-10-27T11:47:21.733Z"
+    },
+    {
+      "id": "men-1793101641733-y5x9",
+      "user_id": "usr-sup-2",
+      "message_id": "msg-1793101641732-aehv",
+      "channel_id": "chan-geral",
+      "channel_name": "Geral & Suporte",
+      "sender_id": "usr-admin-1",
+      "sender_name": "Carlos Oliveira",
+      "sender_role": "ADMIN",
+      "content": "Atenção @todos: Comunicado oficial da supervisão para toda a equipe.",
+      "attachments": [],
+      "is_read": false,
+      "created_at": "2026-10-27T11:47:21.733Z"
+    },
+    {
+      "id": "men-1793034239466-kniw",
+      "user_id": "usr-admin-primary",
+      "message_id": "msg-1793034239466-g8j0",
+      "channel_id": "chan-geral",
+      "channel_name": "Geral & Suporte",
+      "sender_id": "usr-sup-2",
+      "sender_name": "Mariana Souza",
+      "sender_role": "SUPERVISOR",
+      "content": "Olá @Manoel Vilela (Admin), pode revisar o bug SV-1042?",
+      "attachments": [],
+      "is_read": false,
+      "created_at": "2026-10-26T17:03:59.466Z"
+    }
+  ],
+  "articles": [
+    {
+      "id": "art-rejeicao-215",
+      "folder_id": "fld-sefaz",
+      "slug": "como-resolver-rejeicao-215-falha-schema-xml",
+      "title": "Como resolver Rejeição 215: Falha no Schema XML",
+      "summary": "Identificação e remoção de caracteres proibidos (&, <, >, quebras de linha \\n) em campos cadastrais ou observações da NF-e.",
+      "status": "PUBLISHED",
+      "version": 4,
+      "author_id": "usr-1-lead",
+      "author_name": "Carlos Oliveira",
+      "updated_by_name": "Mariana Souza",
+      "views_count": 842,
+      "helpful_yes": 124,
+      "helpful_no": 3,
+      "content_hash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "public_solution_url": "https://ajuda.suasvendas.com/support/solutions/articles/215-falha-no-schema-xml",
+      "module_id": "mod-1",
+      "module_name": "Faturamento e NF-e",
+      "module": "Faturamento e NF-e",
+      "keywords": [
+        "rejeicao",
+        "215",
+        "schema",
+        "xml",
+        "caracteres especiais",
+        "nfe",
+        "sefaz",
+        "quebra de linha"
+      ],
+      "tags": [
+        "nfe",
+        "sefaz",
+        "rejeicao-215",
+        "schema",
+        "xml",
+        "faturamento"
+      ],
+      "content": {
+        "symptom": "Ao tentar emitir ou transmitir a Nota Fiscal Eletrônica no SuasVendas, o retorno da SEFAZ apresenta: \"Rejeição 215: Falha no Schema XML do lote de NFe\".",
+        "root_cause": "Preenchimento incorreto com caracteres especiais proibidos (ex: &, <, >, tabulações ou quebras de linha '\\n') no nome do cliente, complemento do endereço, ou no campo Observações/Dados Adicionais do Pedido.",
+        "resolution_steps_markdown": "### Passo a Passo de Resolução:\n\n1. Acesse o menu **Vendas > Pedidos** e abra o pedido rejeitado.\n2. Clique na aba **Dados do Cliente**:\n   - Verifique o campo **Razão Social / Nome** e **Nome Fantasia**;\n   - Verifique o campo **Endereço**, **Bairro** e **Complemento**. Remova símbolos como `&` (substitua por `E`), `º`, `ª` ou aspas duplas;\n   - Certifique-se de que o **CEP** contém apenas 8 dígitos numéricos.\n3. Acesse a aba **Dados Adicionais da NF-e**:\n   - Inspecione o campo **Informações Complementares de Interesse do Contribuinte**.\n   - Se o cliente copiou e colou texto de uma planilha Excel ou WhatsApp, pode haver caracteres de quebra de linha oculta (`\\r\\n`). Apague o conteúdo e digite novamente de forma limpa.\n4. No rodapé da nota, clique em **Mais Ações > Validar Estrutura XML**.\n5. Clique em **Transmitir Novamente**.\n\n```xml\n<!-- Exemplo de XML Inválido -->\n<xNome>Supermercado Silva & Filhos Ltda</xNome> <!-- O '&' causa falha no parser SEFAZ -->\n\n<!-- Exemplo Corrigido -->\n<xNome>Supermercado Silva E Filhos Ltda</xNome>\n```\n\n> **Dica do Suporte:** 95% dos casos de Rejeição 215 no SuasVendas estão concentrados no campo *Complemento de Endereço* ou *Observações do Pedido*.",
+        "quick_reply_snippet": "Olá! Identificamos que a Rejeição 215 ocorreu devido a um caractere especial (como \"&\" ou quebra de linha) no cadastro do cliente ou nas observações do pedido. Já orientamos o ajuste: remova esses caracteres e clique em \"Transmitir Novamente\". A nota será autorizada!",
+        "workaround_notes": "Caso o validador SEFAZ persista mesmo sem caracteres no formulário, force uma nova geração da chave rodando o script de recalculação de digest via console de engenharia.",
+        "erp_parameters": "Parâmetro `NFE_SANITIZE_INPUT_STRINGS=true` no painel de configurações gerais da conta."
+      },
+      "attachments": [
+        {
+          "id": "att-sefaz-schema-xml",
+          "file_name": "nfe_schema_validacao_v4.00.xml",
+          "mime_type": "application/xml",
+          "file_size_bytes": 42100,
+          "storage_url": "https://cdn-kb.suasvendas.com/attachments/nfe_schema_validacao_v4.00.xml",
+          "sample_content": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<enviNFe xmlns=\"http://www.portalfiscal.inf.br/nfe\" versao=\"4.00\">\n  <idLote>102938</idLote>\n  <indSinc>1</indSinc>\n  <NFe>\n    <infNFe Id=\"NFe35261000000000000000550010000099811000099818\" versao=\"4.00\">\n      <ide><cUF>35</cUF><cNF>00009981</cNF><natOp>VENDA DE MERCADORIA</natOp></ide>\n    </infNFe>\n  </NFe>\n</enviNFe>"
+        },
+        {
+          "id": "att-manual-pdf",
+          "file_name": "Manual_Orientacao_Contribuinte_SEFAZ_v7.03.pdf",
+          "mime_type": "application/pdf",
+          "file_size_bytes": 1420000,
+          "storage_url": "https://cdn-kb.suasvendas.com/attachments/Manual_Orientacao_Contribuinte_SEFAZ.pdf"
+        }
+      ],
+      "created_at": "2026-09-10T10:00:00Z",
+      "updated_at": "2026-10-25T18:30:00Z"
+    },
+    {
+      "id": "art-rejeicao-539",
+      "folder_id": "fld-sefaz",
+      "slug": "rejeicao-539-duplicidade-chave-acesso",
+      "title": "Rejeição 539: Duplicidade de NF-e com diferença na Chave de Acesso",
+      "summary": "A nota fiscal já foi autorizada pela SEFAZ mas a confirmação sofreu timeout na rede, gerando tentativa de emissão com nova chave.",
+      "status": "PUBLISHED",
+      "version": 3,
+      "author_id": "usr-2-agent",
+      "author_name": "Mariana Souza",
+      "updated_by_name": "Carlos Oliveira",
+      "views_count": 512,
+      "helpful_yes": 89,
+      "helpful_no": 1,
+      "content_hash": "9a7bc44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b899",
+      "public_solution_url": "https://ajuda.suasvendas.com/support/solutions/articles/539-duplicidade-chave-acesso",
+      "module_id": "mod-1",
+      "module_name": "Faturamento e NF-e",
+      "module": "Faturamento e NF-e",
+      "keywords": [
+        "rejeicao",
+        "539",
+        "duplicidade",
+        "chave de acesso",
+        "protocolo",
+        "sefaz",
+        "timeout",
+        "danfe"
+      ],
+      "tags": [
+        "nfe",
+        "sefaz",
+        "rejeicao-539",
+        "duplicidade",
+        "faturamento"
+      ],
+      "content": {
+        "symptom": "Ao reenviar uma nota fiscal que travou em \"Em Processamento\", o sistema retorna: \"Rejeição 539: Duplicidade de NF-e com diferença na Chave de Acesso [chNFe: 3526... nRec: ...]\".",
+        "root_cause": "Na primeira tentativa, a SEFAZ autorizou a nota, porém houve oscilação de link antes do SuasVendas gravar o protocolo no banco de dados. Ao reenviar, o sistema gerou um novo código numérico aleatório (cNF), gerando uma chave diferente para o mesmo número de NF.",
+        "resolution_steps_markdown": "### Passo a Passo de Resolução:\n\n1. Copie a **Chave de Acesso original informada na mensagem de erro** (ex: `35261000000000000000550010000099811000099818`).\n2. Acesse o **Portal Nacional da SEFAZ** (ou Portal Estadual) e faça uma consulta pública com essa chave para confirmar se está com status **AUTORIZADA**.\n3. Se estiver autorizada:\n   - No SuasVendas, acesse **Faturamento > Notas Fiscais**.\n   - Abra a nota rejeitada, clique no menu superior **Ações Avançadas > Sincronizar por Chave SEFAZ**.\n   - Cole a chave e o número do protocolo exibido no portal.\n   - O SuasVendas baixará o XML de distribuição autorizado automaticamente e atualizará o status para **Emitida / Concluída**.\n4. Não altere o número da nota nem exclua o registro para não gerar buraco na sequência fiscal.",
+        "quick_reply_snippet": "Olá! A Rejeição 539 significa que sua nota fiscal já foi autorizada pela SEFAZ na tentativa anterior, mas o retorno oscilou. Já puxamos o protocolo oficial da SEFAZ para o seu SuasVendas e a nota está autorizada e pronta para impressão do DANFE!",
+        "workaround_notes": "Caso o cliente utilize certificado A3 e a chave não seja encontrada no portal, verificar se a emissão anterior ocorreu em contingência SVC-AN.",
+        "erp_parameters": "Módulo Fiscal > Timeout de Consulta SEFAZ: alterar de 15s para 30s se houver reincidência."
+      },
+      "attachments": [],
+      "created_at": "2026-08-15T11:00:00Z",
+      "updated_at": "2026-10-24T15:20:00Z"
+    },
+    {
+      "id": "art-sync-estoque-erp",
+      "folder_id": "fld-erp-bling-tiny",
+      "slug": "divergencia-saldo-estoque-bling-tiny",
+      "title": "Divergência de Saldo de Estoque: Integração Bling / Tiny ERP",
+      "summary": "Procedimento para forçar sincronização de saldo de produtos físicos e depósitos quando há atraso no webhook.",
+      "status": "PUBLISHED",
+      "version": 5,
+      "author_id": "usr-1-lead",
+      "author_name": "Carlos Oliveira",
+      "updated_by_name": "Carlos Oliveira",
+      "views_count": 673,
+      "helpful_yes": 104,
+      "helpful_no": 4,
+      "content_hash": "3f7ba44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852c002",
+      "public_solution_url": "https://ajuda.suasvendas.com/support/solutions/articles/integracao-estoque-bling-tiny",
+      "module_id": "mod-3",
+      "module_name": "Integrações ERP & API",
+      "module": "Integrações ERP & API",
+      "keywords": [
+        "estoque",
+        "sincronizacao",
+        "bling",
+        "tiny",
+        "webhook",
+        "saldo",
+        "deposito",
+        "divergencia",
+        "erp"
+      ],
+      "tags": [
+        "erp",
+        "bling",
+        "tiny",
+        "estoque",
+        "webhook",
+        "integracao"
+      ],
+      "content": {
+        "symptom": "O estoque no Bling ou Tiny ERP foi alterado (ex: venda em loja física), porém o vendedor no SuasVendas ainda vê a quantidade antiga.",
+        "root_cause": "Webhook de notificação de estoque desativado no painel do ERP ou divergência entre o \"Depósito Geral\" e \"Depósito SuasVendas\".",
+        "resolution_steps_markdown": "### Verificação e Resolução:\n\n1. **Configuração do Webhook no ERP (Bling / Tiny):**\n   - Acesse **Configurações > Integrações > Webhooks** no ERP.\n   - Verifique se o evento `estoque.alterado` está ativo apontando para:\n     `https://api.suasvendas.com/v2/webhooks/erp/stock`\n2. **Mapeamento de Depósitos no SuasVendas:**\n   - Acesse **Configurações > Integrações > [Seu ERP] > Mapeamento de Depósitos**.\n   - Certifique-se de que o ID do depósito principal está selecionado.\n3. **Disparo de Ressincronização Rápida:**\n   - Para atualizar em massa, vá em **Produtos > Mais Ações > Sincronizar Estoque com ERP**.\n   - O processo roda em fila assíncrona e processa 500 produtos/minuto.",
+        "quick_reply_snippet": "Olá! Fizemos a ressincronização forçada do saldo de estoque do seu ERP com o SuasVendas. O estoque dos produtos selecionados já foi atualizado! Por favor, pressione Ctrl+F5 no seu painel para atualizar a visualização.",
+        "workaround_notes": "Se o cliente tiver mais de 20.000 SKUs e o Tiny retornar erro 429 Too Many Requests, ative o rate limiting dinâmico de 3 chamadas/seg no conector.",
+        "erp_parameters": "Setting: `ERP_SYNC_BATCH_SIZE=250` e `ERP_STOCK_DEPOSIT_FILTER_ID=9812739`"
+      },
+      "attachments": [
+        {
+          "id": "att-modelo-xlsx",
+          "file_name": "planilha_mapeamento_depositos_erp.xlsx",
+          "mime_type": "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
+          "file_size_bytes": 18400,
+          "storage_url": "https://cdn-kb.suasvendas.com/attachments/planilha_mapeamento_depositos_erp.xlsx"
+        }
+      ],
+      "created_at": "2026-07-20T09:00:00Z",
+      "updated_at": "2026-10-26T09:15:00Z"
+    },
+    {
+      "id": "art-rejeicao-660",
+      "folder_id": "fld-sefaz",
+      "slug": "rejeicao-660-cfop-combustivel-grupo-combustivel-nao-informado",
+      "title": "Rejeição 660: CFOP de Combustível e não informado grupo de combustível",
+      "summary": "Erro ao faturar lubrificantes, graxas ou solventes com CFOPs fiscais da família 5.65x / 6.65x sem código ANP.",
+      "status": "PUBLISHED",
+      "version": 2,
+      "author_id": "usr-3-agent",
+      "author_name": "Lucas Ferreira",
+      "updated_by_name": "Mariana Souza",
+      "views_count": 231,
+      "helpful_yes": 42,
+      "helpful_no": 0,
+      "content_hash": "118ba44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852ab11",
+      "public_solution_url": "https://ajuda.suasvendas.com/support/solutions/articles/rejeicao-660-combustivel-anp",
+      "module_id": "mod-1",
+      "module_name": "Faturamento e NF-e",
+      "module": "Faturamento e NF-e",
+      "keywords": [
+        "rejeicao",
+        "660",
+        "combustivel",
+        "anp",
+        "cfop",
+        "graxa",
+        "oleo",
+        "tributacao",
+        "sefaz"
+      ],
+      "tags": [
+        "nfe",
+        "sefaz",
+        "rejeicao-660",
+        "anp",
+        "cfop",
+        "faturamento"
+      ],
+      "content": {
+        "symptom": "Ao emitir nota fiscal de óleo, lubrificante ou derivado de petróleo, a SEFAZ rejeita com código 660.",
+        "root_cause": "O CFOP utilizado obriga o preenchimento do grupo fiscal de combustíveis (código ANP) no cadastro do item.",
+        "resolution_steps_markdown": "### Como Corrigir:\n\n1. Acesse **Cadastros > Produtos** e localize o produto rejeitado.\n2. Acesse a aba **Dados Fiscais / Tributação**.\n3. No campo **Código ANP (Agência Nacional do Petróleo)**, informe o código regulatório de 9 dígitos correspondente (ex: `810101001` para Óleo Lubrificante Básico).\n4. Salve o produto.\n5. Volte na nota fiscal, clique em **Recalcular Tributos do Pedido** e reenvie a NF-e.",
+        "quick_reply_snippet": "Olá! A Rejeição 660 indica que o produto possui um CFOP tributário de derivado de petróleo/combustível e precisa do código ANP preenchido no cadastro do produto. Preencha o código ANP de 9 dígitos no item e reenvie a nota!",
+        "workaround_notes": "Caso o item não seja combustível e sim graxa automotiva comum, oriente o cliente a consultar o contador para verificar se o CFOP correto não seria 5.102 / 5.405.",
+        "erp_parameters": "Regra de validação fiscal: NFe v4.00 NT 2016/002."
+      },
+      "attachments": [],
+      "created_at": "2026-09-01T14:00:00Z",
+      "updated_at": "2026-10-22T10:45:00Z"
+    },
+    {
+      "id": "art-api-401-confidential",
+      "folder_id": "fld-api-webhooks",
+      "slug": "troubleshooting-api-401-unauthorized-bearer-token",
+      "title": "Troubleshooting: Erro 401 Unauthorized na API do Portal B2B [NÍVEL 3]",
+      "summary": "Investigação profunda de tokens JWT expirados, escopo incorreto no gateway e rotação de credenciais de clientes corporativos.",
+      "status": "PUBLISHED",
+      "version": 2,
+      "author_id": "usr-1-lead",
+      "author_name": "Carlos Oliveira",
+      "updated_by_name": "Carlos Oliveira",
+      "views_count": 140,
+      "helpful_yes": 28,
+      "helpful_no": 0,
+      "content_hash": "554ba44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852de99",
+      "public_solution_url": "",
+      "module_id": "mod-4",
+      "module_name": "Catálogo & Portal B2B",
+      "module": "Catálogo & Portal B2B",
+      "keywords": [
+        "api",
+        "401",
+        "unauthorized",
+        "jwt",
+        "token",
+        "portal b2b",
+        "oauth",
+        "autenticacao"
+      ],
+      "tags": [
+        "api",
+        "jwt",
+        "auth",
+        "401",
+        "confidencial",
+        "engenharia"
+      ],
+      "is_confidential": true,
+      "content": {
+        "symptom": "A equipe de TI do cliente relata que chamadas para `https://api.suasvendas.com/v2/orders` retornam status HTTP 401 Unauthorized repentinamente.",
+        "root_cause": "Expiração da chave secreta da API por ciclo de 90 dias ou ausência do header `X-SV-Tenant-ID` após migração de cluster.",
+        "resolution_steps_markdown": "### Procedimento Restrito à Engenharia e Nível 3:\n\n1. Acesse o console administrativo de Tenants em: `https://admin-internal.suasvendas.com/tenants`.\n2. Busque pelo CNPJ ou e-mail da conta master do cliente.\n3. Inspecione o registro em **OAuth Clients**:\n   - Verifique o campo `is_active` e `token_expiration_timestamp`.\n   - Se expirado, gere um novo par de chaves (Client ID e Secret).\n4. Verifique nos logs do Kubernetes (`kubectl logs -n prod-api -l app=gateway-auth`) se o IP do servidor do cliente não caiu na blocklist do WAF da Cloudflare por excesso de requisições malformadas.\n5. Se o IP estiver bloqueado, limpe o cache de firewall com o comando de liberação temporária.",
+        "quick_reply_snippet": "Olá! Nossa equipe de engenharia validou a conectividade do seu endpoint. Identificamos que as credenciais de autenticação da API precisavam de renovação. Emitimos uma nova chave segura em Configurações > API no seu painel.",
+        "workaround_notes": "Artigo estritamente restrito. Nunca encaminhar links ou screenshots deste procedimento para clientes finais.",
+        "erp_parameters": "Rotacionar via CLI: `sv-cli tenant rotate-keys --id=tenant_8829`"
+      },
+      "attachments": [],
+      "created_at": "2026-06-10T16:00:00Z",
+      "updated_at": "2026-10-18T17:00:00Z"
+    },
+    {
+      "id": "art-mobile-sync-offline",
+      "folder_id": "fld-mobile-offline",
+      "slug": "pedidos-presos-offline-app-android",
+      "title": "Pedidos Presos na Caixa de Saída Offline (App Android SuasVendas)",
+      "summary": "Como destravar pedidos digitados em área sem cobertura de sinal de operadora que não sincronizam com o servidor.",
+      "status": "PUBLISHED",
+      "version": 3,
+      "author_id": "usr-3-agent",
+      "author_name": "Lucas Ferreira",
+      "updated_by_name": "Mariana Souza",
+      "views_count": 489,
+      "helpful_yes": 91,
+      "helpful_no": 2,
+      "content_hash": "778ba44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852ff44",
+      "public_solution_url": "https://ajuda.suasvendas.com/support/solutions/articles/pedidos-offline-android",
+      "module_id": "mod-5",
+      "module_name": "App Mobile Força de Vendas",
+      "module": "App Mobile Força de Vendas",
+      "keywords": [
+        "mobile",
+        "android",
+        "offline",
+        "caixa de saida",
+        "pedidos",
+        "sincronizacao",
+        "fila"
+      ],
+      "tags": [
+        "mobile",
+        "android",
+        "offline",
+        "caixa-de-saida",
+        "pedidos"
+      ],
+      "content": {
+        "symptom": "O representante comercial digitou 5 pedidos no aplicativo enquanto viajava na estrada, mas ao conectar no Wi-Fi os pedidos continuam na aba \"Pendentes de Envio\".",
+        "root_cause": "Inconsistência temporária na tabela SQLite local do aplicativo provocada por economia extrema de bateria do Android (Doze Mode) ou cliente com bloqueio de crédito pendente.",
+        "resolution_steps_markdown": "### Passo a Passo para o Analista Orientar o Vendedor:\n\n1. No celular do vendedor, abra o app **SuasVendas Força de Vendas**.\n2. Abra o menu lateral esquerdo e toque em **Configurações > Sincronização**.\n3. Desative a opção **\"Sincronizar apenas no Wi-Fi\"** (para permitir uso de 4G/5G).\n4. Vá em **Sincronização Avançada > Validar Integridade Local**:\n   - O aplicativo verificará se há algum pedido com número de cliente duplicado ou item sem preço.\n5. Se tudo estiver válido, toque em **Forçar Envio da Fila de Saída**.\n6. **ATENÇÃO:** NUNCA oriente o vendedor a desinstalar o app ou \"Limpar Dados\" do Android enquanto houver pedidos na Caixa de Saída, pois isso apagará os pedidos salvos apenas no celular!",
+        "quick_reply_snippet": "Olá! Não se preocupe, seus pedidos offline continuam salvos no celular. Para enviar agora, abra o app SuasVendas, vá em Menu > Sincronização e toque em \"Forçar Envio da Fila de Saída\". Por favor, não desinstale o app!",
+        "workaround_notes": "Em versões antigas do Android 11 da Xiaomi (MIUI), é necessário dar permissão de \"Início Automático\" nas configurações do aparelho.",
+        "erp_parameters": "App config flag: `OFFLINE_SYNC_RETRY_INTERVAL_SECONDS=180`"
+      },
+      "attachments": [],
+      "created_at": "2026-08-01T10:00:00Z",
+      "updated_at": "2026-10-25T11:00:00Z"
+    },
+    {
+      "id": "art-pedidos-bloqueio-credito",
+      "folder_id": "fld-regras-comerciais",
+      "slug": "liberacao-pedidos-bloqueados-limite-credito",
+      "title": "Liberação de Pedidos Bloqueados por Limite de Crédito ou Inadimplência",
+      "summary": "Procedimento para o supervisor analisar o histórico de títulos e aprovar pedidos retidos na esteira comercial.",
+      "status": "PUBLISHED",
+      "version": 1,
+      "author_id": "usr-sup-2",
+      "author_name": "Mariana Souza",
+      "updated_by_name": "Mariana Souza",
+      "views_count": 310,
+      "helpful_yes": 58,
+      "helpful_no": 0,
+      "content_hash": "aa1ba44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852ee33",
+      "public_solution_url": "",
+      "module_id": "mod-2",
+      "module_name": "Pedidos e Orçamentos",
+      "module": "Pedidos e Orçamentos",
+      "keywords": [
+        "pedidos",
+        "bloqueio",
+        "credito",
+        "limite",
+        "liberacao",
+        "supervisor",
+        "desconto",
+        "inadimplencia",
+        "aprovacao"
+      ],
+      "tags": [
+        "pedidos",
+        "credito",
+        "supervisor",
+        "bloqueio",
+        "comercial"
+      ],
+      "content": {
+        "symptom": "Vendedor tenta salvar pedido de venda e o sistema exibe alerta vermelho: \"Pedido bloqueado para faturamento: cliente com títulos vencidos ou limite insuficiente\".",
+        "root_cause": "Política comercial ativada que trava pedidos quando o saldo em aberto do cliente excede o limite cadastrado na ficha ou possui boletos com mais de 5 dias de atraso.",
+        "resolution_steps_markdown": "### Como o Supervisor Avalia e Libera:\n\n1. Acesse **Vendas > Pedidos > Filtro: Bloqueados**.\n2. Abra o pedido em questão e clique no botão superior **Auditoria de Crédito**.\n3. Verifique o resumo de inadimplência e o valor total do novo pedido.\n4. Caso a diretoria comercial autorize a exceção:\n   - Clique em **Autorizar Pedido (Aprovação Manual)**.\n   - Digite a justificativa obrigatória (ex: *Negociação direta com o cliente via pagamento da primeira parcela*).\n5. O status do pedido mudará para **Aprovado** e seguirá para faturamento.",
+        "quick_reply_snippet": "Olá! O pedido ficou retido na esteira comercial devido a uma pendência cadastral ou limite de crédito do cliente. A solicitação de liberação já foi enviada ao supervisor responsável para análise!",
+        "workaround_notes": "Caso o cliente já tenha quitado o título no banco, pode ser dado baixa manual provisória no módulo financeiro.",
+        "erp_parameters": "Política Comercial: `ALLOW_OVER_LIMIT_DISCOUNT=false`"
+      },
+      "attachments": [],
+      "created_at": "2026-09-15T14:20:00Z",
+      "updated_at": "2026-10-25T16:00:00Z"
+    },
+    {
+      "id": "art-cobranca-pix-qrcode",
+      "folder_id": "fld-certificados",
+      "slug": "configuracao-pix-dinamico-boletos-bancarios",
+      "title": "Como Habilitar PIX Dinâmico com QR Code em Boletos Bancários",
+      "summary": "Passo a passo para emitir boletos híbridos (código de barras + QR Code PIX) com liquidação instantânea e conciliação automática.",
+      "status": "PUBLISHED",
+      "version": 1,
+      "author_id": "usr-1-lead",
+      "author_name": "Carlos Oliveira",
+      "updated_by_name": "Carlos Oliveira",
+      "views_count": 420,
+      "helpful_yes": 73,
+      "helpful_no": 1,
+      "content_hash": "cc3ba44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b785299aa",
+      "public_solution_url": "",
+      "module_id": "mod-6",
+      "module_name": "Financeiro & Cobrança",
+      "module": "Financeiro & Cobrança",
+      "keywords": [
+        "pix",
+        "qrcode",
+        "boleto",
+        "cobranca",
+        "banco",
+        "financeiro",
+        "baixa automatica",
+        "conciliacao"
+      ],
+      "tags": [
+        "financeiro",
+        "pix",
+        "boleto",
+        "cobranca",
+        "bancario"
+      ],
+      "content": {
+        "symptom": "Cliente deseja que as faturas e boletos emitidos pelo SuasVendas tenham QR Code do PIX impresso para pagamento imediato.",
+        "root_cause": "A conta bancária da empresa está configurada no layout tradicional CNAB 240/400 sem a chave de integração com a API PIX do banco conveniado.",
+        "resolution_steps_markdown": "### Como Ativar a Cobrança Híbrida:\n\n1. Acesse **Financeiro > Contas Bancárias** e edite a carteira de cobrança.\n2. Na aba **PIX Híbrido**:\n   - Marque a opção **\"Imprimir QR Code PIX no corpo do Boleto\"**;\n   - Selecione a chave PIX cadastrada no Banco (CNPJ, E-mail ou Chave Aleatória);\n   - Insira o Certificado mTLS (.p12 ou .pem) fornecido pelo portal de desenvolvedores do banco (ex: Banco do Brasil, Itaú, Bradesco ou Cora).\n3. Salve a configuração e faça uma emissão de teste em homologação.\n4. Ao escanear o QR Code, a liquidação ocorre em menos de 10 segundos e o SuasVendas registra a baixa automática sem necessidade de envio de arquivo de retorno CNAB.",
+        "quick_reply_snippet": "Olá! O boleto híbrido já pode ser emitido com QR Code PIX no SuasVendas. Basta ativar a opção em Financeiro > Contas Bancárias e anexar as credenciais da API do seu banco. A baixa dos pagamentos é instantânea!",
+        "workaround_notes": "Caso o banco não possua API de webhook ativa, a conciliação pode ser feita através da leitura diária do arquivo de retorno tradicional.",
+        "erp_parameters": "Flag de gateway: `ENABLE_PIX_DYNAMIC_PAYMENTS=true`"
+      },
+      "attachments": [],
+      "created_at": "2026-10-01T11:00:00Z",
+      "updated_at": "2026-10-24T18:00:00Z"
+    }
+  ],
+  "categories": [
+    {
+      "id": "cat-faturamento",
+      "slug": "faturamento-e-nfe",
+      "name": "Faturamento e NF-e / NFC-e",
+      "description": "Emissão fiscal, certificados digitais, contingência e comunicação com a SEFAZ.",
+      "external_helpcenter_id": "help-cat-101",
+      "order_index": 1,
+      "icon": "Receipt"
+    },
+    {
+      "id": "cat-pedidos",
+      "slug": "pedidos-e-orcamentos",
+      "name": "Pedidos e Orçamentos",
+      "description": "Fluxo comercial, aprovação, tabelas de preço, comissões e políticas de desconto.",
+      "external_helpcenter_id": "help-cat-102",
+      "order_index": 2,
+      "icon": "ShoppingCart"
+    },
+    {
+      "id": "cat-integracoes",
+      "slug": "integracoes-erp-api",
+      "name": "Integrações ERP & API REST",
+      "description": "Sincronização com Bling, Tiny, Omie, Totvs Protheus, Webhooks e API Pública.",
+      "external_helpcenter_id": "help-cat-103",
+      "order_index": 3,
+      "icon": "RefreshCw"
+    },
+    {
+      "id": "cat-catalogo-b2b",
+      "slug": "catalogo-e-portal-b2b",
+      "name": "Catálogo & Portal B2B",
+      "description": "Vitrine digital para representantes e autoatendimento de lojistas.",
+      "external_helpcenter_id": "help-cat-104",
+      "order_index": 4,
+      "icon": "Store"
+    },
+    {
+      "id": "cat-mobile",
+      "slug": "app-mobile-forca-vendas",
+      "name": "App Mobile & Força de Vendas",
+      "description": "Operação offline no Android/iOS, sincronização de pedidos e GPS de visitas.",
+      "external_helpcenter_id": "help-cat-105",
+      "order_index": 5,
+      "icon": "Smartphone"
+    }
+  ],
+  "folders": [
+    {
+      "id": "fld-sefaz",
+      "category_id": "cat-faturamento",
+      "slug": "rejeicoes-sefaz-comuns",
+      "name": "Rejeições SEFAZ Mais Comuns",
+      "visibility_level": "PUBLIC_MIRROR"
+    },
+    {
+      "id": "fld-certificados",
+      "category_id": "cat-faturamento",
+      "slug": "certificados-a1-a3",
+      "name": "Certificado Digital A1/A3",
+      "visibility_level": "INTERNAL"
+    },
+    {
+      "id": "fld-regras-comerciais",
+      "category_id": "cat-pedidos",
+      "slug": "regras-tributacao-desconto",
+      "name": "Regras Comerciais e Tributárias",
+      "visibility_level": "INTERNAL"
+    },
+    {
+      "id": "fld-erp-bling-tiny",
+      "category_id": "cat-integracoes",
+      "slug": "sync-bling-tiny",
+      "name": "Sincronização Bling & Tiny ERP",
+      "visibility_level": "INTERNAL"
+    },
+    {
+      "id": "fld-api-webhooks",
+      "category_id": "cat-integracoes",
+      "slug": "erros-api-webhooks",
+      "name": "Erros de API e Webhooks (Nível 3)",
+      "visibility_level": "CONFIDENTIAL"
+    },
+    {
+      "id": "fld-mobile-offline",
+      "category_id": "cat-mobile",
+      "slug": "sync-offline-conflitos",
+      "name": "Sincronização Offline e Cache",
+      "visibility_level": "INTERNAL"
+    }
+  ],
+  "favorites": []
+}
